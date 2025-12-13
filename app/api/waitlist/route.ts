@@ -27,9 +27,9 @@ function getWelcomeEmailTemplate(data: {
   lastName: string
   email: string
 }) {
-  // Logo URL - using raw GitHub URL for better reliability
-  // The logo is in the public folder on GitHub, so we can use the raw URL
-  const logoUrl = 'https://raw.githubusercontent.com/liqwifihq/Liqwid-Finance/main/public/Liqwifi_logo.svg'
+  // Logo URL - try production URL first, fallback to GitHub raw URL
+  // Using production URL as primary since logo should be accessible from the site
+  const logoUrl = 'https://liqwifi.com/Liqwifi_logo.svg'
   
   return `
 <!DOCTYPE html>
@@ -47,9 +47,9 @@ function getWelcomeEmailTemplate(data: {
     <tr>
       <td align="center">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; background-color: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
-          <!-- Header with logo -->
+          <!-- Header with logo on gradient background -->
           <tr>
-            <td style="background-color: #FFFFFF; padding: 32px 40px 24px; text-align: center; border-bottom: 1px solid #E5E7EB;">
+            <td style="background: linear-gradient(135deg, #9ECE58 0%, #93E4F1 100%); padding: 24px 40px; text-align: center;">
               <a href="https://liqwifi.com" style="text-decoration: none; display: inline-block;">
                 <img src="${logoUrl}" alt="Liqwifi" width="140" style="max-width: 140px; width: 140px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" />
               </a>
@@ -81,9 +81,33 @@ function getWelcomeEmailTemplate(data: {
                 Liqwifi will enable you to send and receive money locally and internationally, pay bills instantly, access loans based on your credit score, and grow your money through simple investments—all in one secure app.
               </p>
               
-              <p style="margin: 0; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+              <p style="margin: 0 0 24px; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 We'll keep you updated on our progress and notify you as soon as we're ready to launch.
               </p>
+              
+              <p style="margin: 24px 0 0; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+                Regards,<br>
+                <strong style="color: #0F0F0F; font-weight: 500;">The Liqwifi Team</strong>
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Social Media Links -->
+          <tr>
+            <td style="background-color: #FFFFFF; padding: 24px 40px 32px; text-align: center; border-bottom: 1px solid #E5E7EB;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
+                <tr>
+                  <td style="padding: 0 16px;">
+                    <a href="https://x.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">X</a>
+                  </td>
+                  <td style="padding: 0 16px;">
+                    <a href="https://instagram.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">Instagram</a>
+                  </td>
+                  <td style="padding: 0 16px;">
+                    <a href="https://facebook.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">Facebook</a>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
           
