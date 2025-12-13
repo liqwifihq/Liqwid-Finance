@@ -55,9 +55,9 @@ function getWelcomeEmailTemplate(data: {
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; background-color: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
           <!-- Header with logo on gradient background -->
           <tr>
-            <td style="background: linear-gradient(135deg, #9ECE58 0%, #93E4F1 100%); padding: 24px 40px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #9ECE58 0%, #93E4F1 100%); padding: 16px 40px; text-align: center;">
               <a href="https://liqwifi.com" style="text-decoration: none; display: inline-block;">
-                <img src="${logoUrl}" alt="Liqwifi" width="140" style="max-width: 140px; width: 140px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" />
+                <img src="${logoUrl}" alt="Liqwifi" width="120" style="max-width: 120px; width: 120px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" />
               </a>
             </td>
           </tr>
@@ -103,14 +103,20 @@ function getWelcomeEmailTemplate(data: {
             <td style="background-color: #FFFFFF; padding: 24px 40px 32px; text-align: center; border-bottom: 1px solid #E5E7EB;">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
                 <tr>
-                  <td style="padding: 0 16px;">
-                    <a href="https://x.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">X</a>
+                  <td style="padding: 0 12px;">
+                    <a href="https://x.com/liqwifi" style="text-decoration: none; display: inline-block;">
+                      <img src="https://img.icons8.com/ios-filled/50/000000/twitterx.png" alt="X (Twitter)" width="24" height="24" style="width: 24px; height: 24px; display: block; border: 0; outline: none; opacity: 0.7;" />
+                    </a>
                   </td>
-                  <td style="padding: 0 16px;">
-                    <a href="https://instagram.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">Instagram</a>
+                  <td style="padding: 0 12px;">
+                    <a href="https://instagram.com/liqwifi" style="text-decoration: none; display: inline-block;">
+                      <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" width="24" height="24" style="width: 24px; height: 24px; display: block; border: 0; outline: none; opacity: 0.7;" />
+                    </a>
                   </td>
-                  <td style="padding: 0 16px;">
-                    <a href="https://facebook.com/liqwifi" style="color: #0F0F0F; text-decoration: none; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 500;">Facebook</a>
+                  <td style="padding: 0 12px;">
+                    <a href="https://facebook.com/liqwifi" style="text-decoration: none; display: inline-block;">
+                      <img src="https://img.icons8.com/ios-filled/50/000000/facebook.png" alt="Facebook" width="24" height="24" style="width: 24px; height: 24px; display: block; border: 0; outline: none; opacity: 0.7;" />
+                    </a>
                   </td>
                 </tr>
               </table>
