@@ -27,9 +27,9 @@ function getWelcomeEmailTemplate(data: {
   lastName: string
   email: string
 }) {
-  // Logo URL - use production domain
-  // The logo is in /public/Liqwifi_logo.svg and should be accessible at the root
-  const logoUrl = 'https://liqwifi.com/Liqwifi_logo.svg'
+  // Logo URL - using raw GitHub URL for better reliability
+  // The logo is in the public folder on GitHub, so we can use the raw URL
+  const logoUrl = 'https://raw.githubusercontent.com/liqwifihq/Liqwid-Finance/main/public/Liqwifi_logo.svg'
   
   return `
 <!DOCTYPE html>
@@ -38,6 +38,9 @@ function getWelcomeEmailTemplate(data: {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Liqwifi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #F9FAFB;">
   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F9FAFB; padding: 40px 20px;">
@@ -47,36 +50,38 @@ function getWelcomeEmailTemplate(data: {
           <!-- Header with logo -->
           <tr>
             <td style="background-color: #FFFFFF; padding: 32px 40px 24px; text-align: center; border-bottom: 1px solid #E5E7EB;">
-              <img src="${logoUrl}" alt="Liqwifi" width="140" height="auto" style="max-width: 140px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none;" />
+              <a href="https://liqwifi.com" style="text-decoration: none; display: inline-block;">
+                <img src="${logoUrl}" alt="Liqwifi" width="140" style="max-width: 140px; width: 140px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" />
+              </a>
             </td>
           </tr>
           
           <!-- Main Content -->
           <tr>
             <td style="padding: 40px;">
-              <p style="margin: 0 0 16px; color: #0F0F0F; font-size: 18px; line-height: 26px; font-weight: 500;">
+              <p style="margin: 0 0 16px; color: #0F0F0F; font-size: 18px; line-height: 26px; font-weight: 500; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 Hi ${data.firstName},
               </p>
               
-              <p style="margin: 0 0 20px; color: #4B4B57; font-size: 16px; line-height: 24px;">
+              <p style="margin: 0 0 20px; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 Thank you for joining the Liqwifi waitlist. You're now among the first to access our platform when we launch.
               </p>
               
-              <p style="margin: 0 0 20px; color: #4B4B57; font-size: 16px; line-height: 24px;">
+              <p style="margin: 0 0 20px; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 As an early member, you'll receive:
               </p>
               
-              <ul style="margin: 0 0 24px; padding-left: 20px; color: #4B4B57; font-size: 16px; line-height: 24px;">
+              <ul style="margin: 0 0 24px; padding-left: 20px; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 <li style="margin-bottom: 8px;"><strong>Priority onboarding</strong> when we launch</li>
                 <li style="margin-bottom: 8px;"><strong>Enhanced transaction limits</strong> for early members</li>
                 <li style="margin-bottom: 8px;"><strong>Exclusive early features</strong> before public release</li>
               </ul>
               
-              <p style="margin: 0 0 24px; color: #4B4B57; font-size: 16px; line-height: 24px;">
+              <p style="margin: 0 0 24px; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 Liqwifi will enable you to send and receive money locally and internationally, pay bills instantly, access loans based on your credit score, and grow your money through simple investments—all in one secure app.
               </p>
               
-              <p style="margin: 0; color: #4B4B57; font-size: 16px; line-height: 24px;">
+              <p style="margin: 0; color: #4B4B57; font-size: 16px; line-height: 24px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 We'll keep you updated on our progress and notify you as soon as we're ready to launch.
               </p>
             </td>
@@ -85,10 +90,10 @@ function getWelcomeEmailTemplate(data: {
           <!-- Footer -->
           <tr>
             <td style="background-color: #F9FAFB; padding: 24px 40px; text-align: center; border-top: 1px solid #E5E7EB;">
-              <p style="margin: 0 0 8px; color: #4B4B57; font-size: 13px; line-height: 18px;">
+              <p style="margin: 0 0 8px; color: #4B4B57; font-size: 13px; line-height: 18px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 You're receiving this email because you joined the Liqwifi waitlist.
               </p>
-              <p style="margin: 0; color: #9CA3AF; font-size: 12px; line-height: 16px;">
+              <p style="margin: 0; color: #9CA3AF; font-size: 12px; line-height: 16px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                 © ${new Date().getFullYear()} Liqwifi. All rights reserved.
               </p>
             </td>
