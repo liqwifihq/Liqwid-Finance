@@ -71,7 +71,7 @@ export default function HowItWorks() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: isMobile ? '40px 5% 60px' : '20px 0px 110px',
+        padding: isMobile ? '40px 5% 60px' : '20px 0px 40px',
         isolation: 'isolate',
         width: '100%',
         maxWidth: isMobile ? '100%' : '100%',
