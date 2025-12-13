@@ -52,9 +52,21 @@ export default function WaitlistPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      // Handle form submission here
-      console.log('Form submitted:', formData)
-      
+      // Submit to API endpoint
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form')
+      }
+
       // Show success modal
       setShowSuccessModal(true)
       
@@ -71,6 +83,7 @@ export default function WaitlistPage() {
     } catch (error) {
       console.error('Form submission error:', error)
       // You can add error handling UI here
+      alert('There was an error submitting your form. Please try again later.')
     }
   }
 
