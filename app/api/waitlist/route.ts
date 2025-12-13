@@ -27,11 +27,9 @@ function getWelcomeEmailTemplate(data: {
   lastName: string
   email: string
 }) {
-  // Logo URL - update this to your production domain
-  // The logo should be accessible at: https://yourdomain.com/Liqwifi_logo.svg
-  const logoUrl = process.env.NEXT_PUBLIC_SITE_URL 
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}/Liqwifi_logo.svg`
-    : 'https://liqwifi.com/Liqwifi_logo.svg'
+  // Logo URL - use production domain
+  // The logo is in /public/Liqwifi_logo.svg and should be accessible at the root
+  const logoUrl = 'https://liqwifi.com/Liqwifi_logo.svg'
   
   return `
 <!DOCTYPE html>
@@ -49,7 +47,7 @@ function getWelcomeEmailTemplate(data: {
           <!-- Header with logo -->
           <tr>
             <td style="background-color: #FFFFFF; padding: 32px 40px 24px; text-align: center; border-bottom: 1px solid #E5E7EB;">
-              <img src="${logoUrl}" alt="Liqwifi" style="max-width: 140px; height: auto; display: block; margin: 0 auto;" />
+              <img src="${logoUrl}" alt="Liqwifi" width="140" height="auto" style="max-width: 140px; height: auto; display: block; margin: 0 auto; border: 0; outline: none; text-decoration: none;" />
             </td>
           </tr>
           
