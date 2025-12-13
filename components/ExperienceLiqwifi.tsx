@@ -133,6 +133,7 @@ export default function ExperienceLiqwifi() {
                     letterSpacing: isMobile ? '-1px' : '-1.5px',
                     color: '#0F0F0F',
                     margin: 0,
+                    marginTop: '30px',
                     whiteSpace: 'normal',
                     wordWrap: 'break-word',
                   }}

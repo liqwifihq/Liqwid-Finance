@@ -830,7 +830,7 @@ export default function HeroSection() {
             }}
           >
             <Image
-              src="/Image (2).png"
+              src="/hero-mockup.png"
               alt="Liqwifi App Interface"
               width={320}
               height={554}

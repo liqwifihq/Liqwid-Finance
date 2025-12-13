@@ -300,15 +300,16 @@ export default function HowItWorks() {
                 fontSize: '16px',
                 lineHeight: '27px',
                 display: 'flex',
-                alignItems: isMobile ? 'center' : 'flex-start',
-                justifyContent: isMobile ? 'center' : 'flex-start',
-                textAlign: isMobile ? 'center' : 'left',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
                 color: '#4B4B57',
                 flex: 'none',
                 order: 0,
                 alignSelf: 'stretch',
                 flexGrow: 0,
                 margin: 0,
+                marginTop: isMobile ? '0px' : '30px',
               }}
             >
               From joining the waitlist to managing transfers, loans and investments, Liqwifi is being built so anyone can get up and running in minutes.
@@ -390,26 +391,6 @@ export default function HowItWorks() {
                   position: 'relative',
                 }}
               >
-                {/* Icon Box */}
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '12px',
-                    width: '48px',
-                    height: '48px',
-                    background: '#F9FAFB',
-                    opacity: 0,
-                    borderRadius: '8px',
-                    flex: 'none',
-                    order: 0,
-                    flexGrow: 0,
-                    zIndex: 0,
-                  }}
-                />
-
                 {/* Container */}
                 <div
                   style={{
@@ -594,28 +575,6 @@ export default function HowItWorks() {
                   position: 'relative',
                 }}
               >
-                {/* Icon Box - Hidden on mobile */}
-                {!isMobile && (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '12px',
-                    width: '48px',
-                    height: '48px',
-                    background: '#F9FAFB',
-                    opacity: 0,
-                    borderRadius: '8px',
-                    flex: 'none',
-                    order: 0,
-                    flexGrow: 0,
-                    zIndex: 0,
-                  }}
-                />
-                )}
-
                 {/* Container */}
                 <div
                   style={{
@@ -802,28 +761,6 @@ export default function HowItWorks() {
                   position: 'relative',
                 }}
               >
-                {/* Icon Box - Hidden on mobile */}
-                {!isMobile && (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '12px',
-                    width: '48px',
-                    height: '48px',
-                    background: '#F9FAFB',
-                    opacity: 0,
-                    borderRadius: '8px',
-                    flex: 'none',
-                    order: 0,
-                    flexGrow: 0,
-                    zIndex: 0,
-                  }}
-                />
-                )}
-
                 {/* Container */}
                 <div
                   style={{
