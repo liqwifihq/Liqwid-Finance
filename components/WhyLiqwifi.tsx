@@ -14,9 +14,9 @@ export default function WhyLiqwifi() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: isMobile ? '20px 20px 50px' : '40px 120px 200px 122px',
+        padding: isMobile ? '20px 20px 50px' : '40px 0px 200px',
         width: '100%',
-        maxWidth: isMobile ? '390px' : '1440px',
+        maxWidth: isMobile ? '390px' : '100%',
         minHeight: isMobile ? '779.68px' : '800px',
         background: '#FFFFFF',
         flex: 'none',
@@ -33,11 +33,11 @@ export default function WhyLiqwifi() {
         style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          padding: '0px',
-          gap: isMobile ? '40px' : '239px',
-          width: '100%',
-          maxWidth: isMobile ? '90%' : '1198px',
+          alignItems: isMobile ? 'center' : 'flex-end',
+          padding: isMobile ? '0px' : '0px',
+          gap: isMobile ? '40px' : '120px',
+          width: isMobile ? '90%' : '100%',
+          maxWidth: isMobile ? '90%' : '960px',
           minHeight: isMobile ? 'auto' : '446.98px',
           flex: 'none',
           order: 0,
@@ -45,6 +45,7 @@ export default function WhyLiqwifi() {
           flexGrow: 0,
           position: 'relative',
           overflow: 'visible',
+          margin: isMobile ? '0px' : '0 auto',
         }}
       >
         {/* Left Content */}
@@ -70,7 +71,7 @@ export default function WhyLiqwifi() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: isMobile ? 'center' : 'flex-start',
                 padding: '0px',
                 gap: isMobile ? '16px' : '16px',
                 width: isMobile ? '100%' : '515.13px',
@@ -147,10 +148,10 @@ export default function WhyLiqwifi() {
                   flexDirection: 'column',
                   alignItems: isMobile ? 'center' : 'flex-start',
                   padding: '0px',
-                  width: isMobile ? '100%' : '515.13px',
-                  maxWidth: isMobile ? '100%' : '515.13px',
-                  height: isMobile ? 'auto' : '152px',
-                  minHeight: isMobile ? 'auto' : '152px',
+                    width: isMobile ? '100%' : '420px',
+                    maxWidth: isMobile ? '100%' : '420px',
+                    height: isMobile ? 'auto' : 'auto',
+                    minHeight: isMobile ? 'auto' : 'auto',
                   flex: 'none',
                   order: 1,
                   alignSelf: 'stretch',
@@ -164,10 +165,10 @@ export default function WhyLiqwifi() {
                     flexDirection: 'column',
                     alignItems: isMobile ? 'center' : 'flex-start',
                     padding: '0px',
-                    width: isMobile ? '100%' : '515.13px',
-                    maxWidth: isMobile ? '100%' : '515.13px',
-                    height: isMobile ? 'auto' : '152px',
-                    minHeight: isMobile ? 'auto' : '152px',
+                    width: isMobile ? '100%' : '420px',
+                    maxWidth: isMobile ? '100%' : '420px',
+                    height: isMobile ? 'auto' : 'auto',
+                    minHeight: isMobile ? 'auto' : 'auto',
                     flex: 'none',
                     order: 0,
                     alignSelf: 'stretch',
@@ -177,26 +178,22 @@ export default function WhyLiqwifi() {
                   {/* A Simple Money App for Sending, Borrowing & Growing Your Money */}
                   <h2
                     style={{
-                      width: isMobile ? '100%' : '515.13px',
-                      maxWidth: isMobile ? '100%' : '515.13px',
-                      height: isMobile ? 'auto' : '152px',
-                      minHeight: isMobile ? 'auto' : '152px',
+                      width: isMobile ? '100%' : '420px',
+                      maxWidth: isMobile ? '100%' : '420px',
+                      height: isMobile ? 'auto' : 'auto',
+                      minHeight: isMobile ? 'auto' : 'auto',
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
                       fontWeight: 700,
                       fontSize: isMobile ? 'clamp(24px, 6.5vw, 28px)' : '36px',
                       lineHeight: isMobile ? 'clamp(32px, 8.5vw, 38px)' : '50px',
                       letterSpacing: '-1px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: isMobile ? 'center' : 'flex-start',
-                      textAlign: 'center',
+                      display: 'block',
+                      textAlign: isMobile ? 'center' : 'left',
                       color: '#0F0F0F',
-                      flex: 'none',
-                      order: 0,
-                      alignSelf: 'stretch',
-                      flexGrow: 0,
                       margin: 0,
+                      whiteSpace: 'normal',
+                      wordWrap: 'break-word',
                     }}
                   >
                     A Simple Money App for Sending, Borrowing & Growing Your Money
@@ -212,8 +209,8 @@ export default function WhyLiqwifi() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 padding: '0px',
-                width: isMobile ? '100%' : '458.46px',
-                maxWidth: isMobile ? '100%' : '458.46px',
+            width: isMobile ? '100%' : '420px',
+            maxWidth: isMobile ? '100%' : '420px',
                 height: isMobile ? 'auto' : '191px',
                 minHeight: isMobile ? 'auto' : '191px',
                 flex: 'none',
@@ -226,10 +223,10 @@ export default function WhyLiqwifi() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'flex-start',
+                  alignItems: isMobile ? 'center' : 'flex-start',
                   padding: '0px',
-                  width: isMobile ? '100%' : '458.46px',
-                  maxWidth: isMobile ? '100%' : '458.46px',
+            width: isMobile ? '100%' : '420px',
+            maxWidth: isMobile ? '100%' : '420px',
                   height: isMobile ? 'auto' : '191px',
                   minHeight: isMobile ? 'auto' : '191px',
                   flex: 'none',
@@ -241,8 +238,8 @@ export default function WhyLiqwifi() {
                 {/* Paragraph */}
                   <p
                     style={{
-                      width: isMobile ? '100%' : '458.46px',
-                      maxWidth: isMobile ? '100%' : '458.46px',
+            width: isMobile ? '100%' : '420px',
+            maxWidth: isMobile ? '100%' : '420px',
                       height: isMobile ? 'auto' : '191px',
                       minHeight: isMobile ? 'auto' : '191px',
                       fontFamily: 'var(--font-plus-jakarta)',
@@ -251,8 +248,8 @@ export default function WhyLiqwifi() {
                       fontSize: '16px',
                       lineHeight: '27px',
                       display: 'flex',
-                      alignItems: 'flex-start',
-                      textAlign: 'left',
+                      alignItems: isMobile ? 'center' : 'flex-start',
+                      textAlign: isMobile ? 'center' : 'left',
                       color: '#4B4B57',
                       flex: 'none',
                       order: 0,
@@ -272,42 +269,43 @@ export default function WhyLiqwifi() {
         <div
           style={{
             position: 'relative',
-            width: isMobile ? '100%' : '292.87px',
-            maxWidth: isMobile ? '100%' : '292.87px',
-            height: isMobile ? 'auto' : '446.98px',
-            minHeight: isMobile ? '200px' : '446.98px',
+            width: isMobile ? '100%' : '280px',
+            maxWidth: isMobile ? '100%' : '280px',
+            height: isMobile ? 'auto' : '100%',
+            minHeight: isMobile ? '200px' : 'auto',
             flex: 'none',
             order: 1,
             flexGrow: 0,
             display: 'flex',
-            alignItems: 'center',
+            alignItems: isMobile ? 'center' : 'flex-end',
             justifyContent: 'center',
             overflow: 'visible',
             marginTop: isMobile ? '24px' : '0px',
+            alignSelf: isMobile ? 'auto' : 'stretch',
           }}
         >
           {/* FORE LOGO - Foreground, smaller, on top, centered */}
           <div
             style={{
               position: 'relative',
-              width: isMobile ? '100%' : '292.87px',
-              maxWidth: isMobile ? '300px' : '292.87px',
-              height: isMobile ? 'auto' : '446.98px',
+              width: isMobile ? '100%' : '280px',
+              maxWidth: isMobile ? '300px' : '280px',
+              height: isMobile ? 'auto' : '380px',
               aspectRatio: isMobile ? '292.87/446.98' : 'auto',
               flex: 'none',
               order: 1,
               flexGrow: 0,
               zIndex: 2,
               display: 'flex',
-              alignItems: 'center',
+              alignItems: isMobile ? 'center' : 'flex-end',
               justifyContent: 'center',
             }}
           >
             <img
               src="/fore_logo.png"
               alt="Liqwifi Foreground Logo"
-              width={293}
-              height={447}
+              width={280}
+              height={380}
               style={{
                 width: '100%',
                 height: '100%',

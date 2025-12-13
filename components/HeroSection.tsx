@@ -339,8 +339,8 @@ export default function HeroSection() {
               flexDirection: 'column',
               alignItems: 'center',
               padding: '0px',
-              width: isMobile ? '100%' : '197px',
-              maxWidth: isMobile ? '100%' : '197px',
+              width: isMobile ? '197px' : 'auto',
+              maxWidth: isMobile ? '197px' : 'auto',
               height: isMobile ? '58px' : '58px',
               flex: 'none',
               order: 0,
@@ -354,11 +354,11 @@ export default function HeroSection() {
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: isMobile ? '15px 32px' : '15px 32px',
+                padding: isMobile ? '15px 32px' : '15px 24px',
                 gap: '7.99px',
                 isolation: 'isolate',
-                width: isMobile ? '100%' : '197px',
-                maxWidth: isMobile ? '100%' : '197px',
+                width: isMobile ? '197px' : 'auto',
+                maxWidth: isMobile ? '197px' : 'auto',
                 height: '58px',
                 background: '#0F0F0F',
                 borderRadius: '58px',
@@ -376,7 +376,7 @@ export default function HeroSection() {
                   justifyContent: 'center',
                   alignItems: 'flex-start',
                   padding: '0px',
-                  width: '133px',
+                  width: 'auto',
                   height: '28px',
                   flex: 'none',
                   order: 0,
@@ -390,7 +390,7 @@ export default function HeroSection() {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     padding: '0px',
-                    width: '133px',
+                    width: 'auto',
                     height: '28px',
                     flex: 'none',
                     order: 0,
@@ -400,7 +400,7 @@ export default function HeroSection() {
                 >
                   <span
                     style={{
-                      width: '133px',
+                      width: 'auto',
                       height: '28px',
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
@@ -413,6 +413,7 @@ export default function HeroSection() {
                       flex: 'none',
                       order: 0,
                       flexGrow: 0,
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     See How It Works
@@ -446,8 +447,8 @@ export default function HeroSection() {
               flexDirection: 'column',
               alignItems: 'center',
               padding: '0px',
-              width: isMobile ? '100%' : '182px',
-              maxWidth: isMobile ? '100%' : '182px',
+              width: isMobile ? '197px' : 'auto',
+              maxWidth: isMobile ? '197px' : 'auto',
               height: isMobile ? '58px' : '58px',
               flex: 'none',
               order: 1,
@@ -461,10 +462,11 @@ export default function HeroSection() {
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: '15px 32px',
+                padding: isMobile ? '15px 32px' : '15px 24px',
+                gap: '7.99px',
                 isolation: 'isolate',
-                width: isMobile ? '100%' : '182px',
-                maxWidth: isMobile ? '100%' : '182px',
+                width: isMobile ? '197px' : 'auto',
+                maxWidth: isMobile ? '197px' : 'auto',
                 height: '58px',
                 background: '#FFFFFF',
                 borderRadius: '58px',
@@ -482,7 +484,7 @@ export default function HeroSection() {
                   justifyContent: 'center',
                   alignItems: 'flex-start',
                   padding: '0px',
-                  width: '118px',
+                  width: 'auto',
                   height: '28px',
                   flex: 'none',
                   order: 0,
@@ -496,7 +498,7 @@ export default function HeroSection() {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     padding: '0px',
-                    width: '118px',
+                    width: 'auto',
                     height: '28px',
                     flex: 'none',
                     order: 0,
@@ -506,7 +508,7 @@ export default function HeroSection() {
                 >
                   <span
                     style={{
-                      width: '118px',
+                      width: 'auto',
                       height: '28px',
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
@@ -519,6 +521,7 @@ export default function HeroSection() {
                       flex: 'none',
                       order: 0,
                       flexGrow: 0,
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     Join the Waitlist
@@ -575,7 +578,7 @@ export default function HeroSection() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'flex-start',
+              alignItems: isMobile ? 'center' : 'flex-start',
               padding: isMobile ? '36px' : '24px 32px 32px',
               width: isMobile ? '100%' : '388px',
               maxWidth: isMobile ? '100%' : '388px',
@@ -610,55 +613,121 @@ export default function HeroSection() {
             />
             
             <div 
+            className="flex flex-col items-start"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: isMobile ? 'center' : 'flex-start',
+              padding: '0px',
+              gap: isMobile ? '16px' : '32px',
+              width: isMobile ? '100%' : '324px',
+              maxWidth: isMobile ? '100%' : '324px',
+              height: isMobile ? 'auto' : '192px',
+              minHeight: isMobile ? 'auto' : '192px',
+              flex: 'none',
+              order: 0,
+              alignSelf: 'stretch',
+              flexGrow: 0,
+              position: 'relative',
+              zIndex: 2,
+            }}
+          >
+            {/* Text Content */}
+            <div 
               className="flex flex-col items-start"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'flex-start',
+                alignItems: isMobile ? 'center' : 'flex-start',
                 padding: '0px',
-                gap: isMobile ? '16px' : '32px',
+                gap: '16px',
                 width: isMobile ? '100%' : '324px',
                 maxWidth: isMobile ? '100%' : '324px',
-                height: isMobile ? 'auto' : '192px',
-                minHeight: isMobile ? 'auto' : '192px',
+                height: isMobile ? 'auto' : '132px',
+                minHeight: isMobile ? 'auto' : '132px',
                 flex: 'none',
                 order: 0,
                 alignSelf: 'stretch',
                 flexGrow: 0,
-                position: 'relative',
-                zIndex: 2,
               }}
             >
-              {/* Text Content */}
-              <div 
-                className="flex flex-col items-start"
+              {/* Heading */}
+              <h4 
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'flex-start',
+                  alignItems: isMobile ? 'center' : 'flex-start',
                   padding: '0px',
-                  gap: '16px',
                   width: isMobile ? '100%' : '324px',
-                  maxWidth: isMobile ? '291.5px' : '324px',
-                  height: isMobile ? 'auto' : '132px',
-                  minHeight: isMobile ? 'auto' : '132px',
+                  maxWidth: isMobile ? '100%' : '324px',
+                  height: isMobile ? 'auto' : '34px',
+                  minHeight: isMobile ? '26px' : '34px',
                   flex: 'none',
                   order: 0,
                   alignSelf: 'stretch',
                   flexGrow: 0,
+                  margin: 0,
                 }}
               >
-                {/* Heading */}
-                <h4 
+                <span
                   style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    padding: '0px',
                     width: isMobile ? '100%' : '324px',
-                    maxWidth: isMobile ? '291.5px' : '324px',
+                    maxWidth: isMobile ? '100%' : '324px',
                     height: isMobile ? 'auto' : '34px',
                     minHeight: isMobile ? '26px' : '34px',
+                    fontFamily: 'var(--font-plus-jakarta)',
+                    fontStyle: 'normal',
+                    fontWeight: 700,
+                    fontSize: isMobile ? '18px' : '24px',
+                    lineHeight: isMobile ? '25px' : '34px',
+                    letterSpacing: '-0.5px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: isMobile ? 'center' : 'flex-start',
+                    color: '#0F0F0F',
+                    flex: 'none',
+                    order: 0,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                  }}
+                >
+                  Early Access Waitlist
+                </span>
+              </h4>
+              
+              {/* Description */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: isMobile ? 'center' : 'flex-start',
+                  padding: '0px',
+                  width: isMobile ? '100%' : '324px',
+                  maxWidth: isMobile ? '100%' : '324px',
+                  height: isMobile ? 'auto' : '82px',
+                  minHeight: isMobile ? '82px' : '82px',
+                  flex: 'none',
+                  order: 1,
+                  alignSelf: 'stretch',
+                  flexGrow: 0,
+                }}
+              >
+                <p
+                  style={{
+                    width: isMobile ? '100%' : '324px',
+                    maxWidth: isMobile ? '100%' : '324px',
+                    height: isMobile ? 'auto' : '82px',
+                    minHeight: isMobile ? '82px' : '82px',
+                    fontFamily: 'var(--font-plus-jakarta)',
+                    fontStyle: 'normal',
+                    fontWeight: 400,
+                    fontSize: '16px',
+                    lineHeight: '27px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: isMobile ? 'center' : 'flex-start',
+                    textAlign: isMobile ? 'center' : 'left',
+                    color: '#4B4B57',
                     flex: 'none',
                     order: 0,
                     alignSelf: 'stretch',
@@ -666,73 +735,10 @@ export default function HeroSection() {
                     margin: 0,
                   }}
                 >
-                  <span
-                    style={{
-                      width: isMobile ? '100%' : '324px',
-                      maxWidth: isMobile ? '291.5px' : '324px',
-                      height: isMobile ? 'auto' : '34px',
-                      minHeight: isMobile ? '26px' : '34px',
-                      fontFamily: 'var(--font-plus-jakarta)',
-                      fontStyle: 'normal',
-                      fontWeight: 700,
-                      fontSize: isMobile ? '18px' : '24px',
-                      lineHeight: isMobile ? '25px' : '34px',
-                      letterSpacing: '-0.5px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: '#0F0F0F',
-                      flex: 'none',
-                      order: 0,
-                      alignSelf: 'stretch',
-                      flexGrow: 0,
-                    }}
-                  >
-                    Early Access Waitlist
-                  </span>
-                </h4>
-                
-                {/* Description */}
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    padding: '0px',
-                    width: isMobile ? '100%' : '324px',
-                    maxWidth: isMobile ? '291.5px' : '324px',
-                    height: isMobile ? 'auto' : '82px',
-                    minHeight: isMobile ? '82px' : '82px',
-                    flex: 'none',
-                    order: 1,
-                    alignSelf: 'stretch',
-                    flexGrow: 0,
-                  }}
-                >
-                  <p
-                    style={{
-                      width: isMobile ? '100%' : '324px',
-                      maxWidth: isMobile ? '291.5px' : '324px',
-                      height: isMobile ? 'auto' : '82px',
-                      minHeight: isMobile ? '82px' : '82px',
-                      fontFamily: 'var(--font-plus-jakarta)',
-                      fontStyle: 'normal',
-                      fontWeight: 400,
-                      fontSize: '16px',
-                      lineHeight: '27px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: '#4B4B57',
-                      flex: 'none',
-                      order: 0,
-                      alignSelf: 'stretch',
-                      flexGrow: 0,
-                      margin: 0,
-                    }}
-                  >
-                    Be among the first to try Liqwifi when we launch. Get priority onboarding, better limits and early features.
-                  </p>
-                </div>
+                  Be among the first to try Liqwifi when we launch. Get priority onboarding, better limits and early features.
+                </p>
               </div>
+            </div>
 
               {/* Badge - Exact from Figma */}
               <div 

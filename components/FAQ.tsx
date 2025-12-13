@@ -41,7 +41,7 @@ const faqData: FAQItem[] = [
 ]
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number>(0)
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const isMobile = useIsMobile()
 
   const toggleFAQ = (index: number) => {
@@ -55,10 +55,10 @@ export default function FAQ() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: isMobile ? '60px 20px 40px' : '60px 30px 70px',
+        padding: isMobile ? '60px 20px 40px' : '60px 0px 70px',
         isolation: 'isolate',
         width: '100%',
-        maxWidth: '100%',
+        maxWidth: isMobile ? '100%' : '100%',
         height: 'auto',
         minHeight: isMobile ? 'auto' : '1183px',
         flex: 'none',
@@ -121,16 +121,17 @@ export default function FAQ() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '0px',
+          padding: isMobile ? '0px' : '0px',
           gap: isMobile ? '40px' : '60px',
-          width: '100%',
-          maxWidth: isMobile ? '100%' : '1200px',
+          width: isMobile ? '100%' : '100%',
+          maxWidth: isMobile ? '100%' : '960px',
           height: 'auto',
           flex: 'none',
           order: 2,
           flexGrow: 0,
           zIndex: 2,
           position: 'relative',
+          margin: isMobile ? '0px' : '0 auto',
         }}
       >
         {/* Section Title */}

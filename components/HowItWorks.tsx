@@ -71,10 +71,10 @@ export default function HowItWorks() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: isMobile ? '40px 5% 60px' : '20px 30px 110px',
+        padding: isMobile ? '40px 5% 60px' : '20px 0px 110px',
         isolation: 'isolate',
         width: '100%',
-        maxWidth: '100%',
+        maxWidth: isMobile ? '100%' : '100%',
         minHeight: isMobile ? 'auto' : '1143px',
         background: isMobile ? 'linear-gradient(180deg, rgba(203, 254, 145, 0.1) 0%, rgba(255, 255, 255, 1) 30%)' : '#FFFFFF',
         flex: 'none',
@@ -95,15 +95,16 @@ export default function HowItWorks() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '0px',
+          padding: isMobile ? '0px' : '0px',
           gap: isMobile ? '40px' : '56px',
-          width: '100%',
-          maxWidth: isMobile ? '350px' : '1200px',
+          width: isMobile ? '100%' : '100%',
+          maxWidth: isMobile ? '350px' : '960px',
           minHeight: isMobile ? 'auto' : '1013px',
           flex: 'none',
           order: 2,
           flexGrow: 0,
           zIndex: 2,
+          margin: isMobile ? '0px' : '0 auto',
         }}
       >
         {/* Section Title */}
@@ -116,7 +117,7 @@ export default function HowItWorks() {
             padding: '0px',
             gap: isMobile ? '16px' : '16px',
             width: '100%',
-            maxWidth: isMobile ? '100%' : '1200px',
+            maxWidth: isMobile ? '100%' : '960px',
             minHeight: isMobile ? 'auto' : '173px',
             flex: 'none',
             order: 0,
@@ -217,7 +218,7 @@ export default function HowItWorks() {
               alignItems: 'center',
               padding: '0px',
               width: '100%',
-              maxWidth: '1200px',
+              maxWidth: '960px',
               minHeight: '58px',
               flex: 'none',
               order: 1,
@@ -233,7 +234,7 @@ export default function HowItWorks() {
                 alignItems: 'center',
                 padding: '0px',
                 width: '100%',
-                maxWidth: '1200px',
+                maxWidth: '960px',
                 minHeight: '58px',
                 flex: 'none',
                 order: 0,
@@ -245,7 +246,7 @@ export default function HowItWorks() {
               <h2
                 style={{
                   width: '100%',
-                  maxWidth: isMobile ? '100%' : '1200px',
+                  maxWidth: isMobile ? '100%' : '960px',
                   minHeight: isMobile ? 'auto' : '58px',
                   fontFamily: 'var(--font-plus-jakarta)',
                   fontStyle: 'normal',
@@ -299,9 +300,9 @@ export default function HowItWorks() {
                 fontSize: '16px',
                 lineHeight: '27px',
                 display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
-                textAlign: 'left',
+                alignItems: isMobile ? 'center' : 'flex-start',
+                justifyContent: isMobile ? 'center' : 'flex-start',
+                textAlign: isMobile ? 'center' : 'left',
                 color: '#4B4B57',
                 flex: 'none',
                 order: 0,
@@ -323,7 +324,7 @@ export default function HowItWorks() {
             alignItems: 'flex-start',
             padding: '0px',
             width: '100%',
-            maxWidth: isMobile ? '100%' : '1200px',
+            maxWidth: isMobile ? '100%' : '960px',
             minHeight: isMobile ? 'auto' : '784px',
             flex: 'none',
             order: 1,
@@ -338,9 +339,9 @@ export default function HowItWorks() {
               flexDirection: isMobile ? 'column' : 'row',
               alignItems: 'flex-start',
               padding: '0px',
-              gap: isMobile ? '24px' : '36px',
+              gap: isMobile ? '24px' : '40px',
               width: '100%',
-              maxWidth: isMobile ? '100%' : '1200px',
+              maxWidth: isMobile ? '100%' : '960px',
               minHeight: isMobile ? 'auto' : '784px',
               flex: 'none',
               order: 0,
@@ -357,8 +358,8 @@ export default function HowItWorks() {
                 alignItems: 'flex-start',
                 padding: '0px',
                 isolation: 'isolate',
-                width: isMobile ? '100%' : '528px',
-                maxWidth: isMobile ? '100%' : '528px',
+                width: isMobile ? '100%' : '480px',
+                maxWidth: isMobile ? '100%' : '480px',
                 height: isMobile ? 'auto' : '784px',
                 flex: 'none',
                 order: 0,
@@ -366,210 +367,6 @@ export default function HowItWorks() {
                 gap: isMobile ? '24px' : '0px',
               }}
             >
-              {/* Tab 1 */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  padding: isMobile ? '0px' : '36px 20px 36px 16px',
-                  gap: isMobile ? '8px' : '16px',
-                  isolation: 'isolate',
-                  width: isMobile ? '100%' : '528px',
-                  maxWidth: isMobile ? '100%' : '528px',
-                  height: isMobile ? 'auto' : '196px',
-                  minHeight: isMobile ? 'auto' : '196px',
-                  background: isMobile ? 'transparent' : '#F9FAFB',
-                  flex: 'none',
-                  order: 0,
-                  alignSelf: 'stretch',
-                  flexGrow: 0,
-                  zIndex: 0,
-                  position: 'relative',
-                }}
-              >
-                {/* Icon Box */}
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '12px',
-                    width: '48px',
-                    height: '48px',
-                    background: '#F9FAFB',
-                    opacity: 0,
-                    borderRadius: '8px',
-                    flex: 'none',
-                    order: 0,
-                    flexGrow: 0,
-                    zIndex: 0,
-                  }}
-                />
-
-                {/* Container */}
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    padding: '0px',
-                    gap: isMobile ? '8px' : '8px',
-                    width: isMobile ? '100%' : '428px',
-                    maxWidth: isMobile ? '100%' : '428px',
-                    height: isMobile ? 'auto' : '124px',
-                    minHeight: isMobile ? 'auto' : '124px',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: isMobile ? 0 : 1,
-                    zIndex: 1,
-                  }}
-                >
-                  {/* Container */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      width: isMobile ? '100%' : '428px',
-                      maxWidth: isMobile ? '100%' : '428px',
-                      height: isMobile ? 'auto' : '34px',
-                      minHeight: isMobile ? 'auto' : '34px',
-                      flex: 'none',
-                      order: 0,
-                      alignSelf: 'stretch',
-                      flexGrow: 0,
-                    }}
-                  >
-                    {/* Container */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        width: isMobile ? '100%' : '428px',
-                        maxWidth: isMobile ? '100%' : '428px',
-                        height: isMobile ? 'auto' : '34px',
-                        minHeight: isMobile ? 'auto' : '34px',
-                        flex: 'none',
-                        order: 0,
-                        alignSelf: 'stretch',
-                        flexGrow: 0,
-                      }}
-                    >
-                      {/* Join the Waitlist */}
-                      <h3
-                        style={{
-                          width: isMobile ? '100%' : '428px',
-                          maxWidth: isMobile ? '100%' : '428px',
-                          height: isMobile ? 'auto' : '34px',
-                          minHeight: isMobile ? 'auto' : '34px',
-                          fontFamily: 'var(--font-plus-jakarta)',
-                          fontStyle: 'normal',
-                          fontWeight: 700,
-                          fontSize: isMobile ? '18px' : '20px',
-                          lineHeight: isMobile ? '27px' : '34px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          color: '#0F0F0F',
-                          flex: 'none',
-                          order: 0,
-                          alignSelf: 'stretch',
-                          flexGrow: 0,
-                          margin: 0,
-                          marginBottom: isMobile ? '8px' : '0px',
-                        }}
-                      >
-                        Join the Waitlist
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Container */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      width: isMobile ? '100%' : '428px',
-                      maxWidth: isMobile ? '100%' : '428px',
-                      height: isMobile ? 'auto' : '82px',
-                      minHeight: isMobile ? 'auto' : '82px',
-                      flex: 'none',
-                      order: 1,
-                      alignSelf: 'stretch',
-                      flexGrow: 0,
-                    }}
-                  >
-                    {/* Container */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        width: isMobile ? '100%' : '428px',
-                        maxWidth: isMobile ? '100%' : '428px',
-                        height: isMobile ? 'auto' : '82px',
-                        minHeight: isMobile ? 'auto' : '82px',
-                        flex: 'none',
-                        order: 0,
-                        alignSelf: 'stretch',
-                        flexGrow: 0,
-                      }}
-                    >
-                      {/* Share a few details so we can reserve your spot and keep you updated as Liqwifi gets ready to launch in your country. */}
-                      <p
-                        style={{
-                          width: isMobile ? '100%' : '428px',
-                          maxWidth: isMobile ? '100%' : '428px',
-                          height: isMobile ? 'auto' : '82px',
-                          minHeight: isMobile ? 'auto' : '82px',
-                          fontFamily: 'var(--font-plus-jakarta)',
-                          fontStyle: 'normal',
-                          fontWeight: 400,
-                          fontSize: '16px',
-                          lineHeight: '27px',
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          textAlign: 'left',
-                          color: '#4B4B57',
-                          flex: 'none',
-                          order: 0,
-                          alignSelf: 'stretch',
-                          flexGrow: 0,
-                          margin: 0,
-                        }}
-                      >
-                        Share a few details so we can reserve your spot and keep you updated as Liqwifi gets ready to launch in your country.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* HorizontalBorder */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '0%',
-                    right: '0%',
-                    top: '0%',
-                    bottom: '-0.75%',
-                    flex: 'none',
-                    order: 2,
-                    flexGrow: 0,
-                    zIndex: 2,
-                    borderBottom: '1px dashed rgba(0, 0, 0, 0.1)',
-                  }}
-                />
-              </div>
-
               {/* Tab 2 */}
               <div
                 style={{
@@ -790,10 +587,10 @@ export default function HowItWorks() {
                   minHeight: isMobile ? 'auto' : '196px',
                   background: isMobile ? 'transparent' : '#F9FAFB',
                   flex: 'none',
-                  order: 2,
+                  order: 1,
                   alignSelf: 'stretch',
                   flexGrow: 0,
-                  zIndex: 2,
+                  zIndex: 1,
                   position: 'relative',
                 }}
               >
@@ -998,10 +795,10 @@ export default function HowItWorks() {
                   minHeight: isMobile ? 'auto' : '196px',
                   background: isMobile ? 'transparent' : '#F9FAFB',
                   flex: 'none',
-                  order: 3,
+                  order: 2,
                   alignSelf: 'stretch',
                   flexGrow: 0,
-                  zIndex: 3,
+                  zIndex: 2,
                   position: 'relative',
                 }}
               >
@@ -1218,10 +1015,10 @@ export default function HowItWorks() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: '0px',
-                width: isMobile ? '100%' : '636px',
-                maxWidth: isMobile ? '100%' : '636px',
-                height: isMobile ? 'auto' : '691.26px',
-                minHeight: isMobile ? 'auto' : '691.26px',
+                width: isMobile ? '100%' : '440px',
+                maxWidth: isMobile ? '100%' : '440px',
+                height: isMobile ? 'auto' : '480px',
+                minHeight: isMobile ? 'auto' : '480px',
                 aspectRatio: isMobile ? '636/691.26' : 'auto',
                 borderRadius: isMobile ? '16px' : '32px',
                 flex: 'none',
@@ -1234,8 +1031,8 @@ export default function HowItWorks() {
               <Image
                 src="/double_mockup.png"
                 alt="Double Phone Mockup"
-                width={636}
-                height={691}
+                width={440}
+                height={480}
                 style={{
                   width: '100%',
                   height: '100%',

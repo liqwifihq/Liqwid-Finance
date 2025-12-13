@@ -13,9 +13,9 @@ export default function ExperienceLiqwifi() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: isMobile ? '40px 20px 0px' : '60px 30px',
+        padding: isMobile ? '40px 20px 0px' : '60px 0px',
         width: '100%',
-        maxWidth: '100%',
+        maxWidth: isMobile ? '100%' : '100%',
         minHeight: isMobile ? 'auto' : '587.29px',
         flex: 'none',
         order: 4,
@@ -31,12 +31,12 @@ export default function ExperienceLiqwifi() {
         style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          padding: isMobile ? '20px 20px 0px' : '79.3px 69px 80px 60px',
+          alignItems: isMobile ? 'center' : 'flex-end',
+          padding: isMobile ? '20px 20px 0px' : '0px',
           isolation: 'isolate',
-          width: '100%',
-          maxWidth: isMobile ? '350px' : '1200px',
-          minHeight: isMobile ? 'auto' : '467.29px',
+          width: isMobile ? '100%' : '100%',
+          maxWidth: isMobile ? '350px' : '960px',
+          minHeight: isMobile ? 'auto' : '400px',
           background: '#AFDDF5',
           borderRadius: '32px',
           flex: 'none',
@@ -45,6 +45,7 @@ export default function ExperienceLiqwifi() {
           position: 'relative',
           overflow: 'hidden',
           gap: isMobile ? '30px' : '0px',
+          margin: isMobile ? '0px' : '0 auto',
         }}
       >
         {/* Left Content */}
@@ -52,17 +53,18 @@ export default function ExperienceLiqwifi() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '0px',
+            justifyContent: isMobile ? 'center' : 'flex-start',
+            alignItems: isMobile ? 'center' : 'flex-start',
+            padding: isMobile ? '0px' : '60px 50px 80px',
             gap: isMobile ? '24px' : '31.99px',
-            width: '100%',
-            maxWidth: isMobile ? '100%' : '460.52px',
-            minHeight: isMobile ? 'auto' : '307.99px',
-            flex: 'none',
+            width: isMobile ? '100%' : 'auto',
+            maxWidth: isMobile ? '100%' : '480px',
+            minHeight: isMobile ? 'auto' : 'auto',
+            flex: isMobile ? 'none' : '0 0 460px',
             order: 0,
             flexGrow: 0,
             zIndex: 0,
+            alignSelf: isMobile ? 'auto' : 'stretch',
           }}
         >
           {/* Section Title */}
@@ -71,11 +73,11 @@ export default function ExperienceLiqwifi() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: isMobile ? 'center' : 'flex-start',
               padding: '0px',
               gap: isMobile ? '16px' : '16px',
               width: '100%',
-              maxWidth: isMobile ? '100%' : '460.52px',
+              maxWidth: isMobile ? '100%' : '480px',
               minHeight: isMobile ? 'auto' : '214px',
               flex: 'none',
               order: 0,
@@ -92,7 +94,7 @@ export default function ExperienceLiqwifi() {
                 alignItems: 'flex-start',
                 padding: '0px',
                 width: '100%',
-                maxWidth: '460.52px',
+                maxWidth: '480px',
                 minHeight: '116px',
                 flex: 'none',
                 order: 0,
@@ -108,7 +110,7 @@ export default function ExperienceLiqwifi() {
                   alignItems: 'flex-start',
                   padding: '0px',
                   width: '100%',
-                  maxWidth: '460.52px',
+                  maxWidth: '480px',
                   minHeight: '116px',
                   flex: 'none',
                   order: 0,
@@ -119,26 +121,29 @@ export default function ExperienceLiqwifi() {
                 <h2
                   style={{
                     width: '100%',
-                    maxWidth: isMobile ? '307.97px' : '460.52px',
-                    minHeight: isMobile ? '87px' : '116px',
+                    maxWidth: isMobile ? '307.97px' : '480px',
+                    minHeight: isMobile ? '87px' : 'auto',
                     fontFamily: 'var(--font-plus-jakarta)',
                     fontStyle: 'normal',
                     fontWeight: 700,
-                    fontSize: isMobile ? '36px' : '48px',
-                    lineHeight: isMobile ? '43px' : '58px',
-                    display: 'flex',
-                    alignItems: 'center',
+                    fontSize: isMobile ? '36px' : '42px',
+                    lineHeight: isMobile ? '43px' : '52px',
+                    display: 'block',
                     textAlign: isMobile ? 'center' : 'left',
                     letterSpacing: isMobile ? '-1px' : '-1.5px',
                     color: '#0F0F0F',
-                    flex: 'none',
-                    order: 0,
-                    alignSelf: 'stretch',
-                    flexGrow: 0,
                     margin: 0,
+                    whiteSpace: 'normal',
+                    wordWrap: 'break-word',
                   }}
                 >
-                  Be the First to Experience Liqwifi
+                  {isMobile ? (
+                    'Be the First to Experience Liqwifi'
+                  ) : (
+                    <>
+                      Be the First to<br />Experience Liqwifi
+                    </>
+                  )}
                 </h2>
               </div>
             </div>
@@ -151,7 +156,7 @@ export default function ExperienceLiqwifi() {
                 alignItems: 'flex-start',
                 padding: '0px',
                 width: '100%',
-                maxWidth: '460.52px',
+                maxWidth: '480px',
                 minHeight: '82px',
                 flex: 'none',
                 order: 1,
@@ -167,7 +172,7 @@ export default function ExperienceLiqwifi() {
                   alignItems: 'flex-start',
                   padding: '0px',
                   width: '100%',
-                  maxWidth: '460.52px',
+                  maxWidth: '480px',
                   minHeight: '82px',
                   flex: 'none',
                   order: 0,
@@ -208,10 +213,10 @@ export default function ExperienceLiqwifi() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: isMobile ? 'center' : 'flex-start',
               padding: '0px',
               width: '100%',
-              maxWidth: isMobile ? '100%' : '460.52px',
+              maxWidth: isMobile ? '100%' : '480px',
               minHeight: isMobile ? 'auto' : '62px',
               flex: 'none',
               order: 1,
@@ -283,33 +288,33 @@ export default function ExperienceLiqwifi() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignItems: isMobile ? 'center' : 'flex-end',
+            justifyContent: isMobile ? 'center' : 'flex-end',
             padding: '0px',
-            position: isMobile ? 'relative' : 'absolute',
-            height: isMobile ? 'auto' : '414px',
-            left: isMobile ? 'auto' : '60.25%',
-            right: isMobile ? 'auto' : '5.75%',
-            bottom: isMobile ? 'auto' : '0.16px',
-            flex: 'none',
+            position: isMobile ? 'relative' : 'relative',
+            height: isMobile ? 'auto' : '100%',
+            flex: isMobile ? 'none' : '1',
             order: 2,
             flexGrow: 0,
             zIndex: isMobile ? 1 : 2,
             width: isMobile ? '100%' : 'auto',
-            maxWidth: isMobile ? '100%' : '100%',
+            maxWidth: isMobile ? '100%' : '380px',
             marginTop: isMobile ? '-20px' : '0px',
             paddingTop: isMobile ? '40px' : '0px',
+            paddingRight: isMobile ? '0px' : '20px',
+            paddingBottom: isMobile ? '0px' : '0px',
+            alignSelf: isMobile ? 'auto' : 'stretch',
           }}
         >
           <div
             style={{
-              width: isMobile ? '100%' : '408px',
-              maxWidth: isMobile ? '350px' : '408px',
-              height: isMobile ? 'auto' : '435px',
+              width: isMobile ? '100%' : '360px',
+              maxWidth: isMobile ? '350px' : '360px',
+              height: isMobile ? 'auto' : '390px',
               aspectRatio: isMobile ? '408/435' : 'auto',
               flex: 'none',
               order: 0,
-              alignSelf: 'center',
+              alignSelf: isMobile ? 'center' : 'flex-end',
               flexGrow: 0,
               position: 'relative',
             }}
@@ -317,8 +322,8 @@ export default function ExperienceLiqwifi() {
             <Image
               src="/feature-section-mockup.png"
               alt="Liqwifi App Mockup"
-              width={408}
-              height={435}
+              width={360}
+              height={390}
               quality={100}
               style={{
                 width: '100%',
