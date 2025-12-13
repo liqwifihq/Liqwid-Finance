@@ -1,0 +1,412 @@
+/* Mobile Responsive Styles - 390px breakpoint (max-width: 768px) */
+
+@media (max-width: 768px) {
+  /* Hero Section Mobile */
+  .hero-section-mobile {
+    padding: 130px 20px 0px !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-blur-left-mobile {
+    height: 378.19px !important;
+    left: -7.69% !important;
+    right: 37.69% !important;
+    border-radius: 325.6px !important;
+  }
+
+  .hero-blur-right-mobile {
+    height: 790.2px !important;
+    left: 7.69% !important;
+    right: -7.69% !important;
+    top: calc(50% - 790.2px/2 - 396.01px) !important;
+    border-radius: 589.56px !important;
+  }
+
+  .hero-container-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 50px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .hero-content-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 24px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .hero-tagline-mobile {
+    width: 100% !important;
+    max-width: 352px !important;
+    height: 36px !important;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    padding: 4px 10px !important;
+    background: #F9FAFB !important;
+    border-radius: 16px !important;
+  }
+
+  .hero-h1-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+    min-height: 125px !important;
+    font-size: 36px !important;
+    line-height: 41px !important;
+    letter-spacing: -1px !important;
+  }
+
+  .hero-body-mobile {
+    width: 100% !important;
+    max-width: 334.75px !important;
+    height: auto !important;
+    min-height: 184px !important;
+    font-size: 18px !important;
+    line-height: 31px !important;
+  }
+
+  .hero-buttons-mobile {
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 197px !important;
+    height: auto !important;
+    min-height: 136px !important;
+  }
+
+  .hero-image-area-mobile {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 339.5px !important;
+    gap: 10px !important;
+    height: auto !important;
+  }
+
+  .hero-card-mobile {
+    width: 100% !important;
+    max-width: 339.5px !important;
+  }
+
+  .hero-card-title-mobile {
+    font-size: 18px !important;
+    line-height: 25px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .hero-card-desc-mobile {
+    font-size: 16px !important;
+    line-height: 27px !important;
+  }
+
+  /* Navigation Mobile */
+  .nav-mobile {
+    width: 100% !important;
+    max-width: 370px !important;
+    height: 60px !important;
+    padding: 10px 11px !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(2.5px) !important;
+    border-radius: 66px !important;
+  }
+
+  .nav-logo-mobile {
+    width: 82px !important;
+    height: 30.05px !important;
+  }
+
+  .nav-button-mobile {
+    display: none !important;
+  }
+
+  /* Footer Mobile */
+  .footer-mobile {
+    padding: 30px 20px !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    height: auto !important;
+    min-height: 588.11px !important;
+  }
+
+  .footer-container-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 42px !important;
+    height: auto !important;
+  }
+
+  .footer-content-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 30px !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+  }
+
+  .footer-top-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 19px !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+  }
+
+  .footer-description-mobile {
+    width: 100% !important;
+    max-width: 297.58px !important;
+    text-align: center !important;
+    height: auto !important;
+    min-height: 136px !important;
+  }
+
+  .footer-menu-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 157.5px !important;
+    height: auto !important;
+  }
+
+  .footer-menu-links-mobile {
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 56px !important;
+    height: auto !important;
+  }
+
+  .footer-bottom-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+    min-height: 55px !important;
+  }
+
+  .footer-copyright-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    text-align: center !important;
+    height: auto !important;
+    min-height: 55px !important;
+  }
+
+  /* FAQ Mobile */
+  .faq-section-mobile {
+    padding: 20px 20px 30px !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    height: auto !important;
+    min-height: 1519.51px !important;
+  }
+
+  .faq-container-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 40px !important;
+    height: auto !important;
+  }
+
+  .faq-title-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 16px !important;
+    height: auto !important;
+    min-height: 201.41px !important;
+  }
+
+  .faq-heading-mobile {
+    font-size: 36px !important;
+    line-height: 43px !important;
+    letter-spacing: -1px !important;
+    width: 100% !important;
+    max-width: 350px !important;
+  }
+
+  .faq-item-mobile {
+    width: 100% !important;
+    max-width: 350px !important;
+    padding: 23.3px 24px 24px !important;
+  }
+
+  .faq-question-mobile {
+    font-size: 18px !important;
+    line-height: 31px !important;
+    width: 100% !important;
+    max-width: 252px !important;
+  }
+
+  .faq-answer-mobile {
+    font-size: 16px !important;
+    line-height: 27px !important;
+    width: 100% !important;
+    max-width: 277.84px !important;
+  }
+
+  /* Experience Liqwifi Mobile */
+  .experience-section-mobile {
+    padding: 20px 20px 30px !important;
+    width: 100% !important;
+    max-width: 390px !important;
+    height: auto !important;
+    min-height: 698.56px !important;
+  }
+
+  .experience-container-mobile {
+    padding: 20px 20px 0px !important;
+    gap: 30px !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .experience-content-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 32px !important;
+    width: 100% !important;
+    max-width: 310px !important;
+    height: auto !important;
+  }
+
+  .experience-title-mobile {
+    font-size: 36px !important;
+    line-height: 43px !important;
+    letter-spacing: -1px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 307.97px !important;
+    height: auto !important;
+    min-height: 87px !important;
+  }
+
+  .experience-desc-mobile {
+    font-size: 16px !important;
+    line-height: 27px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 291.31px !important;
+    height: auto !important;
+    min-height: 109px !important;
+  }
+
+  .experience-button-mobile {
+    width: 100% !important;
+    max-width: 220px !important;
+    height: 62px !important;
+  }
+
+  .experience-image-mobile {
+    width: 100% !important;
+    max-width: 310px !important;
+    height: 292.56px !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    top: auto !important;
+  }
+
+  /* Additional Mobile Overrides */
+  /* Hero Card Right Mobile */
+  .hero-card-right-mobile {
+    width: 100% !important;
+    max-width: 339.5px !important;
+    height: auto !important;
+    min-height: 266px !important;
+    padding: 36px !important;
+    background: linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%) !important;
+  }
+
+  /* Hero Card Badge Mobile */
+  .hero-card-badge-mobile {
+    font-size: 14px !important;
+    line-height: 24px !important;
+    padding: 2px 10px !important;
+  }
+
+  /* Middle Image Mobile */
+  .hero-middle-image-mobile {
+    width: 100% !important;
+    max-width: 339.5px !important;
+    height: auto !important;
+    min-height: 617.7px !important;
+  }
+
+  /* FAQ Blur Shapes Mobile */
+  .faq-blur-left-mobile {
+    height: 300px !important;
+    left: -16.6% !important;
+    right: 21.6% !important;
+    top: 214.75px !important;
+    border-radius: 335.25px !important;
+  }
+
+  .faq-blur-right-mobile {
+    width: 371px !important;
+    right: -100px !important;
+    top: 406.65px !important;
+    bottom: 407.64px !important;
+    border-radius: 404.94px !important;
+  }
+
+  /* FAQ Heading Split Mobile */
+  .faq-heading-split-mobile {
+    display: block !important;
+  }
+
+  .faq-heading-mobile {
+    height: auto !important;
+    min-height: 86.41px !important;
+    flex-direction: column !important;
+    gap: 0px !important;
+  }
+
+  .faq-heading-split-mobile br {
+    display: block !important;
+  }
+
+  /* Hero Card Badge Text Mobile */
+  .hero-card-badge-mobile {
+    font-size: 14px !important;
+    line-height: 24px !important;
+  }
+
+  /* Hero Card Right Description Mobile */
+  .hero-card-right-desc-mobile {
+    font-size: 14px !important;
+    line-height: 24px !important;
+  }
+
+  /* General Mobile Width Constraints */
+  /* Ensure all sections respect mobile width */
+  section {
+    width: 100% !important;
+    max-width: 390px !important;
+  }
+
+  /* Center align text on mobile where specified */
+  .mobile-center {
+    text-align: center !important;
+  }
+
+  /* Stack elements vertically on mobile */
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+
+  /* Hide decorative SVG on mobile if needed */
+  .hero-decorative-svg-mobile {
+    display: none !important;
+  }
+}
+

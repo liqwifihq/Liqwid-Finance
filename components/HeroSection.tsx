@@ -1,0 +1,1116 @@
+'use client'
+
+import Image from 'next/image'
+import Navigation from './Navigation'
+import { useIsMobile } from '@/hooks/useMediaQuery'
+
+export default function HeroSection() {
+  const isMobile = useIsMobile()
+  
+  return (
+    <section 
+      className="relative flex flex-col items-center w-full min-h-screen overflow-hidden bg-white"
+      style={{
+        padding: '0px',
+        paddingTop: isMobile ? '100px' : '0px',
+        paddingBottom: isMobile ? '0px' : '0px',
+        width: '100vw',
+        maxWidth: '100vw',
+        margin: '0',
+        boxSizing: 'border-box',
+        overflowX: 'hidden',
+      }}
+    >
+      {/* Blur Shape Left - Exact CSS from Figma */}
+      <div 
+        className="absolute"
+        style={{
+          position: 'absolute',
+          height: isMobile ? '378.19px' : '937.58px',
+          left: isMobile ? '-7.69%' : '-9.1%',
+          right: isMobile ? '37.69%' : '62.1%',
+          top: '0px',
+          background: '#9ECE58',
+          opacity: 0.2,
+          filter: 'blur(50px)',
+          borderRadius: isMobile ? '325.6px' : '807.19px',
+          transform: 'rotate(180deg)',
+          flex: 'none',
+          order: 0,
+          flexGrow: 0,
+          zIndex: 0,
+        }}
+      />
+
+      {/* Blur Shape Right - Exact CSS from Figma */}
+      <div 
+        className="absolute"
+        style={{
+          position: 'absolute',
+          height: isMobile ? '790.2px' : '919.16px',
+          left: isMobile ? '7.69%' : '78.03%',
+          right: isMobile ? '-7.69%' : '-9.03%',
+          top: isMobile ? 'calc(50% - 790.2px/2 - 396.01px)' : 'calc(50% - 919.16px/2 - 344.38px)',
+          background: '#93E4F1',
+          opacity: 0.3,
+          filter: 'blur(50px)',
+          borderRadius: isMobile ? '589.56px' : '674.82px',
+          transform: 'rotate(180deg)',
+          flex: 'none',
+          order: 1,
+          flexGrow: 0,
+          zIndex: 1,
+        }}
+      />
+
+      {/* Decorative Curved Shapes - Background Graphics */}
+      <svg
+        className="absolute"
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '60%',
+          top: 0,
+          left: 0,
+          zIndex: 2,
+          pointerEvents: 'none',
+          overflow: 'hidden',
+        }}
+        viewBox="0 0 1440 600"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Left Curved Shape - S-like curve, stops before image */}
+        <path
+          d="M -50 150 Q 80 200 100 350 Q 120 500 50 580"
+          stroke="#E5E7EB"
+          strokeWidth="12"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.3"
+        />
+        
+        {/* Right Curved Shape with Arrow Point, stops before image */}
+        <path
+          d="M 1450 120 Q 1380 250 1400 400 Q 1420 550 1350 580 Q 1280 600 1220 600"
+          stroke="#E5E7EB"
+          strokeWidth="12"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.3"
+        />
+        {/* Arrow head tip */}
+        <path
+          d="M 1220 600 L 1190 585 L 1200 615"
+          stroke="#E5E7EB"
+          strokeWidth="12"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.3"
+        />
+      </svg>
+
+      {/* Navigation - Inside Hero Section */}
+      <div 
+        className="absolute top-0 z-20"
+        style={{
+          marginTop: '24px',
+          left: isMobile ? '0px' : '50%',
+          right: isMobile ? '0px' : 'auto',
+          transform: isMobile ? 'none' : 'translateX(-50%)',
+          width: isMobile ? '100%' : 'auto',
+          paddingLeft: isMobile ? '20px' : '0px',
+          paddingRight: isMobile ? '20px' : '0px',
+          boxSizing: 'border-box',
+        }}
+      >
+        <Navigation />
+      </div>
+
+      {/* Main Container */}
+      <div 
+        className="relative flex flex-col items-center w-full"
+        style={{ 
+          maxWidth: '100vw',
+          padding: isMobile ? '0px 20px' : '0px',
+          zIndex: 10,
+          paddingTop: isMobile ? '24px' : '190px',
+          paddingBottom: isMobile ? '0px' : '80px',
+          gap: isMobile ? '0px' : '0px',
+          boxSizing: 'border-box',
+          width: '100%',
+        }}
+      >
+        
+        {/* Tagline/Category Pill - At the very top */}
+          <div 
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: isMobile ? '24px' : '32px',
+              marginTop: '0px',
+              width: '100%',
+            }}
+          >
+            <div 
+              style={{
+                background: isMobile ? '#F9FAFB' : 'rgba(75, 75, 87, 0.1)',
+                backdropFilter: isMobile ? 'none' : 'blur(10px)',
+                width: isMobile ? 'auto' : 'auto',
+                maxWidth: isMobile ? '100%' : 'none',
+                height: isMobile ? '36px' : 'auto',
+                borderRadius: isMobile ? '16px' : '9999px',
+                padding: isMobile ? '4px 10px' : '8px 16px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                border: isMobile ? '1px solid #E5E7EB' : 'none',
+                boxSizing: 'border-box',
+              }}
+            >
+              <span 
+                style={{
+                  fontFamily: 'var(--font-plus-jakarta)',
+                  fontSize: '14px',
+                  lineHeight: '24px',
+                  fontWeight: 400,
+                  color: '#4B4B57',
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Early Access • Cross-Border Money • Smart Credit
+              </span>
+            </div>
+          </div>
+
+        {/* Top Section: Heading, Body Text, and Buttons - Grouped together */}
+        <div
+          className="flex flex-col items-center w-full"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%',
+            maxWidth: isMobile ? '100%' : '1218px',
+            marginBottom: isMobile ? '32px' : '80px',
+            gap: isMobile ? '24px' : '0px',
+            boxSizing: 'border-box',
+          }}
+        >
+          {/* Heading 1 - Exact from Figma */}
+          <div 
+            className="flex flex-col items-center"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '0px',
+              width: isMobile ? '100%' : '1218px',
+              maxWidth: isMobile ? '100%' : '100%',
+              height: isMobile ? 'auto' : '148px',
+              flex: 'none',
+              order: 0,
+              alignSelf: 'stretch',
+              flexGrow: 0,
+              marginBottom: isMobile ? '0px' : '32px',
+            }}
+          >
+            <h1 
+              style={{
+                width: isMobile ? '100%' : '1218px',
+                maxWidth: isMobile ? '100%' : '100%',
+                height: isMobile ? 'auto' : '148px',
+                minHeight: isMobile ? 'auto' : '148px',
+                fontFamily: 'var(--font-plus-jakarta)',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: isMobile ? 'clamp(28px, 8vw, 36px)' : '64px',
+                lineHeight: isMobile ? 'clamp(34px, 9vw, 41px)' : '74px',
+                letterSpacing: isMobile ? '-1px' : '-2px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+                justifyContent: 'center',
+                color: '#0F0F0F',
+                flex: 'none',
+                order: 0,
+                alignSelf: 'stretch',
+                flexGrow: 0,
+                margin: 0,
+              }}
+            >
+              Your Money, Loans & Investments in One Powerful App
+            </h1>
+          </div>
+
+          {/* Body Text - Exact from Figma - Immediately after heading */}
+          <div 
+            className="flex flex-col justify-center items-center"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0px',
+              width: isMobile ? '100%' : '1218px',
+              maxWidth: isMobile ? '100%' : '100%',
+              height: isMobile ? 'auto' : '62px',
+              flex: 'none',
+              order: 1,
+              alignSelf: 'stretch',
+              flexGrow: 0,
+              marginBottom: isMobile ? '0px' : '32px',
+            }}
+          >
+            <p 
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '0px',
+                width: isMobile ? '100%' : '1218px',
+                maxWidth: isMobile ? '100%' : '100%',
+                height: isMobile ? 'auto' : '62px',
+                minHeight: isMobile ? 'auto' : '62px',
+                flex: 'none',
+                order: 0,
+                alignSelf: 'stretch',
+                flexGrow: 0,
+                margin: 0,
+              }}
+            >
+              <span
+                style={{
+                  width: isMobile ? '100%' : '1180px',
+                  maxWidth: isMobile ? '100%' : '100%',
+                  height: isMobile ? 'auto' : '62px',
+                  minHeight: isMobile ? 'auto' : '62px',
+                  fontFamily: 'var(--font-plus-jakarta)',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  fontSize: isMobile ? 'clamp(16px, 4.5vw, 18px)' : '18px',
+                  lineHeight: isMobile ? 'clamp(24px, 7vw, 31px)' : '31px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  justifyContent: 'center',
+                  color: '#4B4B57',
+                  flex: 'none',
+                  order: 0,
+                  alignSelf: 'stretch',
+                  flexGrow: 0,
+                }}
+              >
+                Send and receive money locally and internationally, pay bills in seconds, unlock instant loans with your credit score, and grow your money with simple investments, all from one secure app.
+              </span>
+            </p>
+          </div>
+
+          {/* Buttons Container - Exact from Figma - Immediately after body text */}
+          <div 
+            className="flex flex-row justify-center items-center"
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0px',
+              gap: isMobile ? '16px' : '15.99px',
+              width: isMobile ? '100%' : '1218px',
+              maxWidth: isMobile ? '100%' : '100%',
+              height: isMobile ? 'auto' : '58px',
+              minHeight: isMobile ? 'auto' : '58px',
+              flex: 'none',
+              order: 2,
+              alignSelf: 'center',
+              flexGrow: 0,
+              margin: '0 auto',
+            }}
+          >
+          {/* Primary Button - See How It Works - Exact from Figma */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '0px',
+              width: isMobile ? '100%' : '197px',
+              maxWidth: isMobile ? '100%' : '197px',
+              height: isMobile ? '58px' : '58px',
+              flex: 'none',
+              order: 0,
+              flexGrow: 0,
+            }}
+          >
+            <button 
+              className="relative"
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: isMobile ? '15px 32px' : '15px 32px',
+                gap: '7.99px',
+                isolation: 'isolate',
+                width: isMobile ? '100%' : '197px',
+                maxWidth: isMobile ? '100%' : '197px',
+                height: '58px',
+                background: '#0F0F0F',
+                borderRadius: '58px',
+                border: 'none',
+                cursor: 'pointer',
+                flex: 'none',
+                order: 0,
+                flexGrow: 0,
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                  padding: '0px',
+                  width: '133px',
+                  height: '28px',
+                  flex: 'none',
+                  order: 0,
+                  flexGrow: 0,
+                  zIndex: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    width: '133px',
+                    height: '28px',
+                    flex: 'none',
+                    order: 0,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '133px',
+                      height: '28px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 500,
+                      fontSize: '16px',
+                      lineHeight: '27px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#FFFFFF',
+                      flex: 'none',
+                      order: 0,
+                      flexGrow: 0,
+                    }}
+                  >
+                    See How It Works
+                  </span>
+                </div>
+              </div>
+              {/* Border */}
+              <div
+                style={{
+                  boxSizing: 'border-box',
+                  position: 'absolute',
+                  left: '0%',
+                  right: '0%',
+                  top: '0%',
+                  bottom: '0%',
+                  border: '1px solid #0F0F0F',
+                  borderRadius: '58px',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  zIndex: 1,
+                }}
+              />
+            </button>
+          </div>
+
+          {/* Secondary Button - Join the Waitlist - Exact from Figma */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '0px',
+              width: isMobile ? '100%' : '182px',
+              maxWidth: isMobile ? '100%' : '182px',
+              height: isMobile ? '58px' : '58px',
+              flex: 'none',
+              order: 1,
+              flexGrow: 0,
+            }}
+          >
+            <button 
+              className="relative"
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '15px 32px',
+                isolation: 'isolate',
+                width: isMobile ? '100%' : '182px',
+                maxWidth: isMobile ? '100%' : '182px',
+                height: '58px',
+                background: '#FFFFFF',
+                borderRadius: '58px',
+                border: 'none',
+                cursor: 'pointer',
+                flex: 'none',
+                order: 0,
+                flexGrow: 0,
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                  padding: '0px',
+                  width: '118px',
+                  height: '28px',
+                  flex: 'none',
+                  order: 0,
+                  flexGrow: 0,
+                  zIndex: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    width: '118px',
+                    height: '28px',
+                    flex: 'none',
+                    order: 0,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '118px',
+                      height: '28px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 500,
+                      fontSize: '16px',
+                      lineHeight: '27px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#0F0F0F',
+                      flex: 'none',
+                      order: 0,
+                      flexGrow: 0,
+                    }}
+                  >
+                    Join the Waitlist
+                  </span>
+                </div>
+              </div>
+              {/* Border */}
+              <div
+                style={{
+                  boxSizing: 'border-box',
+                  position: 'absolute',
+                  left: '0%',
+                  right: '0%',
+                  top: '0%',
+                  bottom: '-3.25%',
+                  border: '1px solid #0F0F0F',
+                  borderRadius: '58px',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  zIndex: 1,
+                }}
+              />
+            </button>
+          </div>
+        </div>
+        </div>
+
+        {/* Cards and Image Container - Hero Image Area - Exact CSS from Figma */}
+        <div 
+          className="flex flex-row items-start"
+          style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            justifyContent: 'center',
+            alignItems: isMobile ? 'center' : 'flex-start',
+            paddingTop: isMobile ? '32px' : '20px',
+            gap: isMobile ? '10px' : '24px',
+            width: '100%',
+            maxWidth: isMobile ? '100%' : '1164px',
+            height: isMobile ? 'auto' : '705.94px',
+            flex: 'none',
+            order: 1,
+            flexGrow: 0,
+            textAlign: 'left',
+            boxSizing: 'border-box',
+          }}
+        >
+          
+          {/* Hero Card 01 - Early Access Waitlist - Exact from Figma */}
+          <div 
+            className="flex flex-col justify-center items-center"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              padding: isMobile ? '36px' : '24px 32px 32px',
+              width: isMobile ? '100%' : '388px',
+              maxWidth: isMobile ? '100%' : '388px',
+              height: isMobile ? 'auto' : '248px',
+              minHeight: isMobile ? '238px' : '248px',
+              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : '#FFFFFF',
+              borderRadius: '20px',
+              flex: 'none',
+              order: 0,
+              flexGrow: 0,
+              position: 'relative',
+              marginTop: isMobile ? '0px' : '170px',
+              boxSizing: 'border-box',
+            }}
+          >
+            {/* Border */}
+            <div 
+              style={{
+                boxSizing: 'border-box',
+                position: 'absolute',
+                left: '0%',
+                right: '0%',
+                top: '0%',
+                bottom: '-0.57%',
+                border: '1px solid #E5E7EB',
+                borderRadius: '20px',
+                flex: 'none',
+                order: 1,
+                flexGrow: 0,
+                zIndex: 1,
+              }}
+            />
+            
+            <div 
+              className="flex flex-col items-start"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                padding: '0px',
+                gap: isMobile ? '16px' : '32px',
+                width: isMobile ? '100%' : '324px',
+                maxWidth: isMobile ? '100%' : '324px',
+                height: isMobile ? 'auto' : '192px',
+                minHeight: isMobile ? 'auto' : '192px',
+                flex: 'none',
+                order: 0,
+                alignSelf: 'stretch',
+                flexGrow: 0,
+                position: 'relative',
+                zIndex: 2,
+              }}
+            >
+              {/* Text Content */}
+              <div 
+                className="flex flex-col items-start"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  padding: '0px',
+                  gap: '16px',
+                  width: isMobile ? '100%' : '324px',
+                  maxWidth: isMobile ? '291.5px' : '324px',
+                  height: isMobile ? 'auto' : '132px',
+                  minHeight: isMobile ? 'auto' : '132px',
+                  flex: 'none',
+                  order: 0,
+                  alignSelf: 'stretch',
+                  flexGrow: 0,
+                }}
+              >
+                {/* Heading */}
+                <h4 
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    width: isMobile ? '100%' : '324px',
+                    maxWidth: isMobile ? '291.5px' : '324px',
+                    height: isMobile ? 'auto' : '34px',
+                    minHeight: isMobile ? '26px' : '34px',
+                    flex: 'none',
+                    order: 0,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                    margin: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: isMobile ? '100%' : '324px',
+                      maxWidth: isMobile ? '291.5px' : '324px',
+                      height: isMobile ? 'auto' : '34px',
+                      minHeight: isMobile ? '26px' : '34px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: isMobile ? '18px' : '24px',
+                      lineHeight: isMobile ? '25px' : '34px',
+                      letterSpacing: '-0.5px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#0F0F0F',
+                      flex: 'none',
+                      order: 0,
+                      alignSelf: 'stretch',
+                      flexGrow: 0,
+                    }}
+                  >
+                    Early Access Waitlist
+                  </span>
+                </h4>
+                
+                {/* Description */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    width: isMobile ? '100%' : '324px',
+                    maxWidth: isMobile ? '291.5px' : '324px',
+                    height: isMobile ? 'auto' : '82px',
+                    minHeight: isMobile ? '82px' : '82px',
+                    flex: 'none',
+                    order: 1,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      width: isMobile ? '100%' : '324px',
+                      maxWidth: isMobile ? '291.5px' : '324px',
+                      height: isMobile ? 'auto' : '82px',
+                      minHeight: isMobile ? '82px' : '82px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      fontSize: '16px',
+                      lineHeight: '27px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#4B4B57',
+                      flex: 'none',
+                      order: 0,
+                      alignSelf: 'stretch',
+                      flexGrow: 0,
+                      margin: 0,
+                    }}
+                  >
+                    Be among the first to try Liqwifi when we launch. Get priority onboarding, better limits and early features.
+                  </p>
+                </div>
+              </div>
+
+              {/* Badge - Exact from Figma */}
+              <div 
+                className="flex flex-row items-center"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: '2px 10px',
+                  isolation: 'isolate',
+                  width: '212px',
+                  height: '28px',
+                  background: '#0E0E0E',
+                  borderRadius: '20px',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    width: '192px',
+                    height: '24px',
+                    flex: 'none',
+                    order: 0,
+                    flexGrow: 0,
+                    zIndex: 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      padding: '0px',
+                      width: '192px',
+                      height: '24px',
+                      flex: 'none',
+                      order: 0,
+                      alignSelf: 'stretch',
+                      flexGrow: 0,
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: isMobile ? '192px' : '192px',
+                        height: '24px',
+                        fontFamily: 'var(--font-plus-jakarta)',
+                        fontStyle: 'normal',
+                        fontWeight: 400,
+                        fontSize: '14px',
+                        lineHeight: '24px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#FFFFFF',
+                        flex: 'none',
+                        order: 0,
+                        flexGrow: 0,
+                      }}
+                    >
+                      Thousands already signed up
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Middle Image - Phone */}
+          <div 
+            className="flex-shrink-0"
+            style={{
+              width: isMobile ? '100%' : '320px',
+              maxWidth: isMobile ? '100%' : '320px',
+              height: isMobile ? 'auto' : '680.94px',
+              minHeight: isMobile ? 'auto' : '680.94px',
+              aspectRatio: isMobile ? '339.5/617.7' : '320/680.94',
+              flex: 'none',
+              order: 1,
+              flexGrow: 0,
+              alignSelf: isMobile ? 'center' : 'flex-start',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+            }}
+          >
+            <Image
+              src="/Image (2).png"
+              alt="Liqwifi App Interface"
+              width={320}
+              height={554}
+              className="h-full w-auto object-contain"
+              priority
+            />
+          </div>
+
+          {/* Hero Card 02 - Built for fast, secure transactions - Exact from Figma */}
+          <div 
+            className="flex flex-col justify-start items-center"
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: isMobile ? '36px' : '62px 0px 0px',
+              margin: '0 auto',
+              width: isMobile ? '100%' : '388px',
+              maxWidth: isMobile ? '100%' : '388px',
+              height: isMobile ? 'auto' : '370px',
+              minHeight: isMobile ? '266px' : '370px',
+              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : '#F3F3F3',
+              borderRadius: '20px',
+              flex: 'none',
+              order: 2,
+              flexGrow: 0,
+              position: 'relative',
+              marginTop: isMobile ? '0px' : '80px',
+              boxSizing: 'border-box',
+            }}
+          >
+            {/* Border */}
+            <div 
+              style={{
+                boxSizing: 'border-box',
+                position: 'absolute',
+                left: '0%',
+                right: '0%',
+                top: '0%',
+                bottom: '0%',
+                border: '1px solid #E5E7EB',
+                borderRadius: '20px',
+                flex: 'none',
+                order: 1,
+                flexGrow: 0,
+                zIndex: 1,
+              }}
+            />
+            
+            <div 
+              className="flex flex-col items-start"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: isMobile ? 'center' : 'flex-start',
+                padding: isMobile ? '0px' : '0px 32px 32px 32px',
+                gap: isMobile ? '16px' : '32px',
+                width: '100%',
+                flex: 'none',
+                order: 0,
+                alignSelf: 'stretch',
+                flexGrow: 0,
+                position: 'relative',
+                zIndex: 2,
+              }}
+            >
+              {/* Stars - 5 green stars */}
+              <div 
+                className="flex flex-row"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: isMobile ? 'center' : 'flex-start',
+                  alignItems: 'center',
+                  gap: '4px',
+                  width: isMobile ? '100%' : 'auto',
+                }}
+              >
+                {[...Array(5)].map((_, i) => (
+                  <svg 
+                    key={i} 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                      fill="#9ECE58"
+                    />
+                  </svg>
+                ))}
+              </div>
+
+              {/* Text Content */}
+              <div 
+                className="flex flex-col items-start"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: isMobile ? 'center' : 'flex-start',
+                  padding: '0px',
+                  gap: '16px',
+                  width: isMobile ? '100%' : '324px',
+                  maxWidth: isMobile ? '100%' : '324px',
+                  flex: 'none',
+                  order: 0,
+                  alignSelf: 'stretch',
+                  flexGrow: 0,
+                }}
+              >
+                {/* Heading */}
+                <h4 
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: isMobile ? 'center' : 'flex-start',
+                    padding: '0px',
+                    width: isMobile ? '100%' : '324px',
+                    maxWidth: isMobile ? '267.5px' : '324px',
+                    height: isMobile ? 'auto' : '34px',
+                    minHeight: isMobile ? '26px' : '34px',
+                    flex: 'none',
+                    order: 0,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                    margin: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: isMobile ? '100%' : '324px',
+                      maxWidth: isMobile ? '267.5px' : '324px',
+                      height: isMobile ? 'auto' : '34px',
+                      minHeight: isMobile ? '26px' : '34px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: isMobile ? '18px' : '24px',
+                      lineHeight: isMobile ? '25px' : '34px',
+                      letterSpacing: '-0.5px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      textAlign: isMobile ? 'center' : 'left',
+                      color: '#0F0F0F',
+                      flex: 'none',
+                      order: 0,
+                      alignSelf: 'stretch',
+                      flexGrow: 0,
+                    }}
+                  >
+                    Built for fast, secure transactions
+                  </span>
+                </h4>
+                
+                {/* Description */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: isMobile ? 'center' : 'flex-start',
+                    padding: '0px',
+                    width: isMobile ? '100%' : '324px',
+                    maxWidth: isMobile ? '267.5px' : '324px',
+                    flex: 'none',
+                    order: 1,
+                    alignSelf: 'stretch',
+                    flexGrow: 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      width: isMobile ? '100%' : '324px',
+                      maxWidth: isMobile ? '267.5px' : '324px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      fontSize: isMobile ? '14px' : '16px',
+                      lineHeight: isMobile ? '24px' : '27px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      textAlign: isMobile ? 'center' : 'left',
+                      color: '#4B4B57',
+                      flex: 'none',
+                      order: 0,
+                      alignSelf: 'stretch',
+                      flexGrow: 0,
+                      margin: 0,
+                    }}
+                  >
+                    Designed for 0.8s-2s processing times and high uptime so your money moves when you need it.
+                  </p>
+                </div>
+              </div>
+
+              {/* Button - Inside the card */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: isMobile ? 'center' : 'flex-start',
+                  padding: '0px',
+                  width: isMobile ? '100%' : 'auto',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                }}
+              >
+                <button 
+                  className="relative"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: isMobile ? '15px 32px' : '15px 32px',
+                    isolation: 'isolate',
+                    width: isMobile ? 'auto' : 'auto',
+                    minWidth: isMobile ? 'auto' : 'auto',
+                    height: isMobile ? 'auto' : '40px',
+                    minHeight: isMobile ? '40px' : '40px',
+                    background: '#9ECE58',
+                    borderRadius: '58px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    flex: 'none',
+                    order: 0,
+                    flexGrow: 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'flex-start',
+                      padding: '0px',
+                      flex: 'none',
+                      order: 0,
+                      flexGrow: 0,
+                      zIndex: 0,
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        flex: 'none',
+                        order: 0,
+                        alignSelf: 'stretch',
+                        flexGrow: 0,
+                      }}
+                    >
+                      <span
+                        className="hero-card-badge-mobile"
+                        style={{
+                          fontFamily: 'var(--font-plus-jakarta)',
+                          fontStyle: 'normal',
+                          fontWeight: 500,
+                          fontSize: '16px',
+                          lineHeight: '27px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#FFFFFF',
+                          flex: 'none',
+                          order: 0,
+                          flexGrow: 0,
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        Launching Soon
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  )
+}
