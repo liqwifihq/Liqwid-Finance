@@ -27,9 +27,15 @@ function getWelcomeEmailTemplate(data: {
   lastName: string
   email: string
 }) {
-  // Logo URL - try production URL first, fallback to GitHub raw URL
-  // Using production URL as primary since logo should be accessible from the site
-  const logoUrl = 'https://liqwifi.com/Liqwifi_logo.svg'
+  // Logo URL - MUST use PNG, not SVG (email clients don't support SVG)
+  // SVG images are blocked by Gmail, Outlook, and most email clients for security reasons
+  // Solution: Convert SVG to PNG and host it, or use a CDN
+  // For now, using GitHub raw URL for PNG (you'll need to add Liqwifi_logo.png to your repo)
+  // Alternative: Use a CDN like Cloudinary, Imgur, or convert SVG to base64
+  const logoUrl = 'https://liqwifi.com/Liqwifi_logo.png'
+  
+  // Fallback: If PNG doesn't exist yet, you can use this GitHub raw URL after uploading PNG
+  // const logoUrl = 'https://raw.githubusercontent.com/liqwifihq/Liqwid-Finance/main/public/Liqwifi_logo.png'
   
   return `
 <!DOCTYPE html>
