@@ -2,6 +2,20 @@
 
 This guide will help you set up SendGrid for email notifications and Google Sheets for storing waitlist data.
 
+## 🚀 Quick Start Options
+
+**Option 1: Simple Setup (SendGrid Only)** - No Google Cloud needed!
+- ✅ Just set up SendGrid (5 minutes)
+- ✅ Welcome emails work perfectly
+- ❌ No spreadsheet storage (data only in emails)
+- 📖 See `SETUP_SIMPLE.md` for instructions
+
+**Option 2: Full Setup (SendGrid + Google Sheets)** - This guide
+- ✅ SendGrid for emails
+- ✅ Google Sheets for data storage
+- ⚠️ Requires Google Cloud setup (~15 minutes)
+- 📖 Continue reading below
+
 ## Prerequisites
 
 - A SendGrid account (free tier available)

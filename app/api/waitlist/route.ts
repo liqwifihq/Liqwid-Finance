@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
         
         await sheets.spreadsheets.values.append({
           spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
-          range: 'Waitlist!A:G',
+          range: 'Waitlist!A:H',
           valueInputOption: 'USER_ENTERED',
           requestBody: {
             values: [[
@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send welcome email via SendGrid
+    // Send welcome email via SendGrid (REQUIRED for basic functionality)
     if (process.env.SENDGRID_API_KEY && process.env.SENDGRID_FROM_EMAIL) {
       try {
         const msg = {
@@ -175,10 +175,19 @@ export async function POST(request: NextRequest) {
         }
 
         await sgMail.send(msg)
+        console.log('✅ Welcome email sent via SendGrid')
       } catch (emailError: any) {
-        console.error('SendGrid error:', emailError)
-        // Continue even if email fails - data is still saved
+        console.error('❌ SendGrid error:', emailError)
+        // If email fails, we should still return success but log the error
+        // The form submission was technically successful
       }
+    } else {
+      console.warn('⚠️ SendGrid not configured - emails will not be sent')
+      // Return error if SendGrid is not configured (it's the minimum requirement)
+      return NextResponse.json(
+        { error: 'Email service not configured. Please set up SendGrid.' },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json(
