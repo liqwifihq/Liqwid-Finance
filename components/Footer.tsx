@@ -396,34 +396,6 @@ export default function Footer() {
             >
               support@liqwifi.com
             </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-plus-jakarta)',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                fontSize: '16px',
-                lineHeight: '27px',
-                display: 'flex',
-                alignItems: 'center',
-                color: '#4B4B57',
-              }}
-            >
-              •
-            </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-plus-jakarta)',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                fontSize: '16px',
-                lineHeight: '27px',
-                display: 'flex',
-                alignItems: 'center',
-                color: '#4B4B57',
-              }}
-            >
-              +234 (0) XXXXXXXXXX
-            </span>
           </div>
         </div>
       </div>

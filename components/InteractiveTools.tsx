@@ -340,7 +340,8 @@ export default function InteractiveTools() {
               </p>
 
               {/* Button */}
-              <button
+              <a
+                href="/waitlist"
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
@@ -356,6 +357,7 @@ export default function InteractiveTools() {
                   border: 'none',
                   cursor: 'pointer',
                   marginTop: '8px',
+                  textDecoration: 'none',
                 }}
               >
                 <span
@@ -370,7 +372,7 @@ export default function InteractiveTools() {
                 >
                   Join the Waitlist
                 </span>
-              </button>
+              </a>
             </div>
           ) : (
             <div
@@ -628,7 +630,8 @@ export default function InteractiveTools() {
                   }}
                 >
                   {/* Link - Primary Button */}
-                  <div
+                  <a
+                    href="/waitlist"
                     style={{
                       display: 'flex',
                       flexDirection: 'row',
@@ -645,6 +648,7 @@ export default function InteractiveTools() {
                       order: 0,
                       flexGrow: 0,
                       position: 'relative',
+                      textDecoration: 'none',
                     }}
                   >
                     {/* Get In Touch */}
@@ -745,7 +749,7 @@ export default function InteractiveTools() {
                         unoptimized
                       />
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -823,7 +827,8 @@ export default function InteractiveTools() {
               </p>
 
               {/* Button */}
-              <button
+              <a
+                href="/waitlist"
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
@@ -839,6 +844,7 @@ export default function InteractiveTools() {
                   border: 'none',
                   cursor: 'pointer',
                   marginTop: '8px',
+                  textDecoration: 'none',
                 }}
               >
                 <span
@@ -853,7 +859,7 @@ export default function InteractiveTools() {
                 >
                   Join the Waitlist
                 </span>
-              </button>
+              </a>
             </div>
           ) : (
             <div
@@ -1030,7 +1036,8 @@ export default function InteractiveTools() {
                   }}
                 >
                   {/* Link - Primary Button */}
-                  <div
+                  <a
+                    href="/waitlist"
                     style={{
                       display: 'flex',
                       flexDirection: 'row',
@@ -1047,6 +1054,7 @@ export default function InteractiveTools() {
                       order: 0,
                       flexGrow: 0,
                       position: 'relative',
+                      textDecoration: 'none',
                     }}
                   >
                     {/* Get In Touch */}
@@ -1147,7 +1155,7 @@ export default function InteractiveTools() {
                         unoptimized
                       />
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
 
@@ -1302,7 +1310,8 @@ export default function InteractiveTools() {
               </p>
 
               {/* Button */}
-              <button
+              <a
+                href="/waitlist"
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
@@ -1318,6 +1327,7 @@ export default function InteractiveTools() {
                   border: 'none',
                   cursor: 'pointer',
                   marginTop: '8px',
+                  textDecoration: 'none',
                 }}
               >
                 <span
@@ -1332,7 +1342,7 @@ export default function InteractiveTools() {
                 >
                   Join the Waitlist
                 </span>
-              </button>
+              </a>
             </div>
           ) : (
             <div
@@ -1583,7 +1593,8 @@ export default function InteractiveTools() {
                   }}
                 >
                   {/* Link - Primary Button */}
-                  <div
+                  <a
+                    href="/waitlist"
                     style={{
                       display: 'flex',
                       flexDirection: 'row',
@@ -1600,6 +1611,7 @@ export default function InteractiveTools() {
                       order: 0,
                       flexGrow: 0,
                       position: 'relative',
+                      textDecoration: 'none',
                     }}
                   >
                     {/* Get In Touch */}
@@ -1700,7 +1712,7 @@ export default function InteractiveTools() {
                         unoptimized
                       />
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

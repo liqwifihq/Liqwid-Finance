@@ -1,10 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { useIsMobile } from '@/hooks/useMediaQuery'
+import { useIsMobile, useIsTablet } from '@/hooks/useMediaQuery'
+import { useState } from 'react'
 
 export default function Navigation() {
   const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   
   return (
     <nav
@@ -12,10 +15,10 @@ export default function Navigation() {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        padding: isMobile ? '10px 11px' : '0px',
-        width: isMobile ? '100%' : '1169px',
-        maxWidth: isMobile ? '100%' : '1169px',
-        height: isMobile ? '60px' : '75px',
+        padding: isMobile ? '10px 16px' : isTablet ? '10px 20px' : '0px',
+        width: isMobile ? '100%' : isTablet ? '100%' : '1169px',
+        maxWidth: isMobile ? '100%' : isTablet ? '100%' : '1169px',
+        height: isMobile ? '60px' : isTablet ? '65px' : '75px',
         borderRadius: '66px',
         flex: 'none',
         order: 0,
@@ -23,8 +26,8 @@ export default function Navigation() {
         flexGrow: 0,
         zIndex: 0,
         justifyContent: 'space-between',
-        background: isMobile ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.8)',
-        backdropFilter: isMobile ? 'blur(2.5px)' : 'blur(10px)',
+        background: isMobile ? 'rgba(255, 255, 255, 0.85)' : isTablet ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: isMobile ? 'blur(2.5px)' : isTablet ? 'blur(5px)' : 'blur(10px)',
         border: '1px solid rgba(15, 15, 15, 0.1)',
         boxSizing: 'border-box',
         position: 'relative',
@@ -37,14 +40,14 @@ export default function Navigation() {
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
-          paddingLeft: '24px',
+          paddingLeft: isMobile ? '0px' : isTablet ? '12px' : '24px',
         }}
       >
         {/* Logo Icon */}
         <div
           style={{
-            width: isMobile ? '82px' : '108.74px',
-            height: isMobile ? '30.05px' : '43.14px',
+            width: isMobile ? '82px' : isTablet ? '95px' : '108.74px',
+            height: isMobile ? '30.05px' : isTablet ? '35px' : '43.14px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -57,8 +60,8 @@ export default function Navigation() {
             width={109}
             height={43}
             style={{
-              width: isMobile ? '82px' : '108.74px',
-              height: isMobile ? '30.05px' : '43.14px',
+              width: isMobile ? '82px' : isTablet ? '95px' : '108.74px',
+              height: isMobile ? '30.05px' : isTablet ? '35px' : '43.14px',
               objectFit: 'contain',
             }}
             unoptimized
@@ -66,8 +69,127 @@ export default function Navigation() {
         </div>
       </div>
 
+      {/* Mobile/Tablet Menu Button */}
+      {(isMobile || isTablet) && (
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '4px',
+            width: '40px',
+            height: '40px',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '8px',
+            zIndex: 100,
+          }}
+          aria-label="Toggle menu"
+        >
+          <div
+            style={{
+              width: '24px',
+              height: '2px',
+              background: '#0F0F0F',
+              borderRadius: '2px',
+              transition: 'all 0.3s ease',
+              transform: isMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none',
+            }}
+          />
+          <div
+            style={{
+              width: '24px',
+              height: '2px',
+              background: '#0F0F0F',
+              borderRadius: '2px',
+              transition: 'all 0.3s ease',
+              opacity: isMenuOpen ? 0 : 1,
+            }}
+          />
+          <div
+            style={{
+              width: '24px',
+              height: '2px',
+              background: '#0F0F0F',
+              borderRadius: '2px',
+              transition: 'all 0.3s ease',
+              transform: isMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none',
+            }}
+          />
+        </button>
+      )}
+
+      {/* Mobile/Tablet Menu Overlay */}
+      {(isMobile || isTablet) && isMenuOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'transparent',
+            zIndex: 99,
+            animation: 'fadeIn 0.3s ease-in-out',
+          }}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: isMobile ? '80px' : '85px',
+              left: isMobile ? '16px' : '24px',
+              right: isMobile ? '16px' : '24px',
+              width: isMobile ? 'calc(100% - 32px)' : 'calc(100% - 48px)',
+              background: 'transparent',
+              animation: 'slideUp 0.3s ease-out',
+              zIndex: 100,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <a
+              href="/waitlist"
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                padding: isMobile ? '15px 24px' : '15px 32px',
+                background: '#0F0F0F',
+                borderRadius: '58px',
+                color: '#FFFFFF',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-plus-jakarta)',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                fontSize: isMobile ? '16px' : '16px',
+                lineHeight: '27px',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(15, 15, 15, 0.2)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = '0.9'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(15, 15, 15, 0.25)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = '1'
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(15, 15, 15, 0.2)'
+              }}
+            >
+              Join the Waitlist
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Header Button - Exact CSS from Figma */}
-      {!isMobile && (
+      {!isMobile && !isTablet && (
         <div
           style={{
             display: 'flex',
@@ -98,7 +220,8 @@ export default function Navigation() {
             }}
           >
             {/* Link - Primary Button */}
-            <button
+            <a
+              href="/waitlist"
               className="relative"
               style={{
                 display: 'flex',
@@ -122,6 +245,7 @@ export default function Navigation() {
                 order: 0,
                 flexGrow: 0,
                 opacity: 1,
+                textDecoration: 'none',
               }}
             >
               {/* Get In Touch */}
@@ -222,7 +346,7 @@ export default function Navigation() {
                   unoptimized
                 />
               </div>
-            </button>
+            </a>
           </div>
         </div>
       )}

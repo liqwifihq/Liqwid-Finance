@@ -455,7 +455,8 @@ export default function HeroSection() {
               flexGrow: 0,
             }}
           >
-            <button 
+            <a
+              href="/waitlist"
               className="relative"
               style={{
                 display: 'flex',
@@ -475,6 +476,7 @@ export default function HeroSection() {
                 flex: 'none',
                 order: 0,
                 flexGrow: 0,
+                textDecoration: 'none',
               }}
             >
               <div
@@ -545,7 +547,7 @@ export default function HeroSection() {
                   zIndex: 1,
                 }}
               />
-            </button>
+            </a>
           </div>
         </div>
         </div>

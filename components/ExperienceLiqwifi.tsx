@@ -226,7 +226,8 @@ export default function ExperienceLiqwifi() {
             }}
           >
             {/* Link - Primary Button */}
-            <button
+            <a
+              href="/waitlist"
               className="relative"
               style={{
                 display: 'flex',
@@ -246,6 +247,7 @@ export default function ExperienceLiqwifi() {
                 flex: 'none',
                 order: 0,
                 flexGrow: 0,
+                textDecoration: 'none',
               }}
             >
               <span
@@ -280,7 +282,7 @@ export default function ExperienceLiqwifi() {
                   zIndex: 1,
                 }}
               />
-            </button>
+            </a>
           </div>
         </div>
 
