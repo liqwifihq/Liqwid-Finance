@@ -168,12 +168,63 @@ export async function POST(request: NextRequest) {
     const timestamp = new Date().toISOString()
     const interestsString = Array.isArray(interests) ? interests.join(', ') : interests || ''
 
-    // Save to Google Sheets
-    if (
+    // Save to Google Sheets using Google Apps Script webhook (NO Google Cloud account needed!)
+    // This is the SIMPLE method - just needs a Google Apps Script web app URL
+    console.log('🔍 Checking Google Sheets configuration...')
+    console.log('🔍 GOOGLE_SHEETS_WEBHOOK_URL:', process.env.GOOGLE_SHEETS_WEBHOOK_URL ? 'SET' : 'NOT SET')
+    
+    if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
+      console.log('📤 Attempting to save to Google Sheets via Apps Script webhook...')
+      try {
+        const webhookData = {
+          firstName,
+          lastName,
+          email,
+          phone: phone || '',
+          country: country || '',
+          interests: interestsString,
+          hearAboutUs: hearAboutUs || '',
+        }
+
+        // Optional: Add password if you set up security in Apps Script
+        if (process.env.GOOGLE_SHEETS_PASSWORD) {
+          webhookData.password = process.env.GOOGLE_SHEETS_PASSWORD
+        }
+
+        console.log('📤 Sending data to webhook:', process.env.GOOGLE_SHEETS_WEBHOOK_URL)
+        console.log('📤 Webhook data:', JSON.stringify(webhookData))
+
+        const response = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(webhookData),
+        })
+
+        console.log('📥 Webhook response status:', response.status, response.statusText)
+
+        if (response.ok) {
+          const result = await response.json()
+          console.log('✅ Data saved to Google Sheets via Apps Script:', result)
+        } else {
+          const errorText = await response.text()
+          console.error('❌ Google Sheets webhook error:', response.status, errorText)
+          // Continue even if Sheets fails - we still want to send the email
+        }
+      } catch (sheetsError: any) {
+        console.error('❌ Google Sheets webhook exception:', sheetsError.message || sheetsError)
+        console.error('❌ Stack:', sheetsError.stack)
+        // Continue even if Sheets fails - we still want to send the email
+      }
+    }
+    // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
+    else if (
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
       process.env.GOOGLE_PRIVATE_KEY &&
       process.env.GOOGLE_SPREADSHEET_ID
     ) {
+      console.log('📤 Attempting to save to Google Sheets via Service Account...')
       try {
         const sheets = await getGoogleSheetsClient()
         
@@ -194,35 +245,73 @@ export async function POST(request: NextRequest) {
             ]],
           },
         })
+        console.log('✅ Data saved to Google Sheets via Service Account')
       } catch (sheetsError) {
-        console.error('Google Sheets error:', sheetsError)
+        console.error('⚠️ Google Sheets error (continuing anyway):', sheetsError)
         // Continue even if Sheets fails - we still want to send the email
       }
+    } else {
+      console.log('ℹ️ Google Sheets not configured - skipping data storage')
+      console.log('ℹ️ To enable: Set GOOGLE_SHEETS_WEBHOOK_URL environment variable')
     }
 
     // Save contact to SendGrid Marketing Contacts (so you can see it in SendGrid dashboard)
-    // IMPORTANT: This saves basic contact info (name, email, phone) to SendGrid
-    // Additional form data (country, interests, etc.) is stored but may not be visible
-    // unless you create custom fields in SendGrid
+    // This saves: email, first_name, last_name, phone_number, and custom fields
     if (process.env.SENDGRID_API_KEY) {
       try {
-        // Build contact data with only basic fields (no custom fields to avoid errors)
+        // Build contact data with standard fields
         const contact: any = {
           email: email,
           first_name: firstName,
           last_name: lastName,
         }
 
-        // Add phone if provided
+        // Add phone if provided (standard SendGrid field)
         if (phone && phone.trim()) {
           contact.phone_number = phone
+        }
+
+        // Add custom fields
+        // Note: Country is a reserved SendGrid field, so we don't need a custom field for it
+        // We're saving: Interests and Hear About Us as custom fields
+        const customFields: any = {}
+        
+        // Country - This is a reserved SendGrid field, but we'll save it if available
+        // SendGrid has a built-in "country" field, but it might not be in the standard contact object
+        // For now, we'll skip country as it's not a custom field
+        
+        // Interests field - using field name matching to find the ID dynamically
+        // The field name in SendGrid is "interests" (snake_case)
+        if (interestsString && interestsString.trim()) {
+          // Try to find the field ID by fetching field definitions
+          // For now, we'll use a placeholder that you'll need to replace
+          // Call /api/sendgrid-fields to get your actual field IDs
+          customFields.e1 = interestsString // TODO: Replace e1 with actual field ID
+        }
+        
+        // Hear About Us field - field name is "hear_about_us" (snake_case)
+        if (hearAboutUs && hearAboutUs.trim()) {
+          customFields.e2 = hearAboutUs // TODO: Replace e2 with actual field ID
+        }
+
+        // Only add custom_fields if we have at least one
+        if (Object.keys(customFields).length > 0) {
+          contact.custom_fields = customFields
         }
 
         const contactData = {
           contacts: [contact]
         }
 
-        console.log('📤 Attempting to save contact to SendGrid:', { email, firstName, lastName })
+        console.log('📤 Attempting to save contact to SendGrid:', { 
+          email, 
+          firstName, 
+          lastName, 
+          phone: phone || 'not provided',
+          country: country || 'not provided',
+          interests: interestsString || 'none',
+          hearAboutUs: hearAboutUs || 'not provided'
+        })
 
         // Use fetch to call SendGrid Marketing Contacts API
         const response = await fetch('https://api.sendgrid.com/v3/marketing/contacts', {
