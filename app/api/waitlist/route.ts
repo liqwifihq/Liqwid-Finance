@@ -273,12 +273,8 @@ export async function POST(request: NextRequest) {
         console.error('❌ Error stack:', sheetsError.stack)
         // Continue even if Sheets fails - we still want to send the email
       }
-    } else {
-      console.log('ℹ️ Google Sheets webhook URL not configured - skipping data storage')
-      console.log('ℹ️ To enable: Set GOOGLE_SHEETS_WEBHOOK_URL environment variable in Vercel')
-    }
-    // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
-    else if (
+    } else if (
+      // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
       process.env.GOOGLE_PRIVATE_KEY &&
       process.env.GOOGLE_SPREADSHEET_ID

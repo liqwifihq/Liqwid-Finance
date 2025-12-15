@@ -2,21 +2,22 @@
 
 import Image from 'next/image'
 import Navigation from './Navigation'
-import { useIsMobile, useIsTablet } from '@/hooks/useMediaQuery'
+import { useIsMobile, useIsTablet, useIsSmallDesktop } from '@/hooks/useMediaQuery'
 
 export default function HeroSection() {
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
+  const isSmallDesktop = useIsSmallDesktop()
   
   return (
     <section 
       className="relative flex flex-col items-center w-full min-h-screen overflow-hidden bg-white"
       style={{
         padding: '0px',
-        paddingTop: isMobile ? '100px' : isTablet ? '0px' : '0px',
+        paddingTop: isMobile ? '100px' : isTablet ? '105px' : isSmallDesktop ? '105px' : '0px',
         paddingBottom: isMobile ? '0px' : isTablet ? '0px' : '0px',
-        width: '100vw',
-        maxWidth: '100vw',
+        width: '100%',
+        maxWidth: '100%',
         margin: '0',
         boxSizing: 'border-box',
         overflowX: 'hidden',
@@ -118,13 +119,13 @@ export default function HeroSection() {
       <div 
         className="absolute top-0 z-20"
         style={{
-          marginTop: isMobile ? '24px' : isTablet ? '20px' : '24px',
-          left: isMobile ? '0px' : isTablet ? '50%' : '50%',
+          marginTop: isMobile ? '24px' : isTablet ? '20px' : isSmallDesktop ? '20px' : '24px',
+          left: isMobile ? '0px' : isTablet ? '50%' : isSmallDesktop ? '50%' : '50%',
           right: isMobile ? '0px' : 'auto',
           transform: isMobile ? 'none' : 'translateX(-50%)',
-          width: isMobile ? '100%' : isTablet ? 'auto' : 'auto',
-          paddingLeft: isMobile ? '20px' : isTablet ? '24px' : '0px',
-          paddingRight: isMobile ? '20px' : isTablet ? '24px' : '0px',
+          width: isMobile ? '100%' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : 'auto',
+          paddingLeft: isMobile ? '20px' : isTablet ? '24px' : isSmallDesktop ? '24px' : '0px',
+          paddingRight: isMobile ? '20px' : isTablet ? '24px' : isSmallDesktop ? '24px' : '0px',
           boxSizing: 'border-box',
         }}
       >
@@ -135,14 +136,15 @@ export default function HeroSection() {
       <div 
         className="relative flex flex-col items-center w-full"
         style={{ 
-          maxWidth: '100vw',
-          padding: isMobile ? '0px 20px' : '0px',
+          width: '100%',
+          maxWidth: '100%',
+          paddingLeft: isMobile ? '30px' : '0px',
+          paddingRight: isMobile ? '30px' : '0px',
+          paddingTop: isMobile ? '24px' : isTablet ? '40px' : isSmallDesktop ? '40px' : '190px',
+          paddingBottom: isMobile ? '0px' : isTablet ? '60px' : isSmallDesktop ? '60px' : '80px',
           zIndex: 10,
-          paddingTop: isMobile ? '24px' : '190px',
-          paddingBottom: isMobile ? '0px' : '80px',
           gap: isMobile ? '0px' : '0px',
           boxSizing: 'border-box',
-          width: '100%',
         }}
       >
         
@@ -152,7 +154,7 @@ export default function HeroSection() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: isMobile ? '24px' : isTablet ? '28px' : '32px',
+              marginBottom: isMobile ? '24px' : isTablet ? '28px' : isSmallDesktop ? '28px' : '32px',
               marginTop: '0px',
               width: '100%',
             }}
@@ -196,11 +198,13 @@ export default function HeroSection() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '100%',
-            maxWidth: isMobile ? '100%' : '1218px',
+            width: isMobile ? 'calc(100% - 40px)' : '100%',
+            maxWidth: isMobile ? 'calc(100% - 40px)' : '1218px',
             marginBottom: isMobile ? '32px' : '80px',
             gap: isMobile ? '24px' : '0px',
             boxSizing: 'border-box',
+            marginLeft: isMobile ? 'auto' : '0px',
+            marginRight: isMobile ? 'auto' : '0px',
           }}
         >
           {/* Heading 1 - Exact from Figma */}
@@ -333,7 +337,7 @@ export default function HeroSection() {
               margin: '0 auto',
             }}
           >
-          {/* Primary Button - See How It Works - Exact from Figma */}
+          {/* Primary Button - Join the Waitlist - First Button (Black) */}
           <div
             style={{
               display: 'flex',
@@ -348,7 +352,8 @@ export default function HeroSection() {
               flexGrow: 0,
             }}
           >
-            <button 
+            <a
+              href="/waitlist"
               className="relative"
               style={{
                 display: 'flex',
@@ -368,6 +373,7 @@ export default function HeroSection() {
                 flex: 'none',
                 order: 0,
                 flexGrow: 0,
+                textDecoration: 'none',
               }}
             >
               <div
@@ -417,7 +423,7 @@ export default function HeroSection() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    See How It Works
+                    Join the Waitlist
                   </span>
                 </div>
               </div>
@@ -438,10 +444,10 @@ export default function HeroSection() {
                   zIndex: 1,
                 }}
               />
-            </button>
+            </a>
           </div>
 
-          {/* Secondary Button - Join the Waitlist - Exact from Figma */}
+          {/* Secondary Button - See How It Works - Second Button (White) */}
           <div
             style={{
               display: 'flex',
@@ -457,8 +463,21 @@ export default function HeroSection() {
             }}
           >
             <a
-              href="/waitlist"
+              href="#getting-started"
               className="relative"
+              onClick={(e) => {
+                e.preventDefault()
+                const element = document.getElementById('getting-started')
+                if (element) {
+                  const navHeight = isMobile ? 100 : isTablet ? 85 : isSmallDesktop ? 85 : 100
+                  const elementPosition = element.getBoundingClientRect().top
+                  const offsetPosition = elementPosition + window.pageYOffset - navHeight
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
+                }
+              }}
               style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -516,8 +535,8 @@ export default function HeroSection() {
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
                       fontWeight: 500,
-                      fontSize: '16px',
-                      lineHeight: '27px',
+                      fontSize: isMobile ? '16px' : isTablet ? '15px' : '16px',
+                      lineHeight: isMobile ? '27px' : isTablet ? '25px' : '27px',
                       display: 'flex',
                       alignItems: 'center',
                       color: '#0F0F0F',
@@ -527,7 +546,7 @@ export default function HeroSection() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    Join the Waitlist
+                    See How It Works
                   </span>
                 </div>
               </div>
@@ -560,17 +579,22 @@ export default function HeroSection() {
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
             justifyContent: 'center',
-            alignItems: isMobile ? 'center' : 'flex-start',
-            paddingTop: isMobile ? '32px' : '20px',
-            gap: isMobile ? '10px' : '24px',
+            alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : isSmallDesktop ? 'flex-start' : 'flex-start',
+            paddingTop: isMobile ? '32px' : isTablet ? '40px' : isSmallDesktop ? '40px' : '20px',
+            gap: isMobile ? '10px' : isTablet ? '16px' : isSmallDesktop ? '16px' : '24px',
             width: '100%',
-            maxWidth: isMobile ? '100%' : '1164px',
-            height: isMobile ? 'auto' : '705.94px',
+            maxWidth: isMobile ? '100%' : isTablet ? '100%' : isSmallDesktop ? '100%' : '1164px',
+            height: isMobile ? 'auto' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : '705.94px',
             flex: 'none',
             order: 1,
             flexGrow: 0,
             textAlign: 'left',
             boxSizing: 'border-box',
+            paddingLeft: isMobile ? '0px' : isTablet ? '40px' : isSmallDesktop ? '40px' : '0px',
+            paddingRight: isMobile ? '0px' : isTablet ? '40px' : isSmallDesktop ? '40px' : '0px',
+            marginLeft: isMobile ? '0px' : '0px',
+            marginRight: isMobile ? '0px' : '0px',
+            position: 'relative',
           }}
         >
           
@@ -581,19 +605,19 @@ export default function HeroSection() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: isMobile ? 'center' : 'flex-start',
-              padding: isMobile ? '36px' : isTablet ? '28px 24px 28px' : '24px 32px 32px',
-              width: isMobile ? '100%' : isTablet ? '100%' : '388px',
-              maxWidth: isMobile ? '100%' : isTablet ? '100%' : '388px',
-              height: isMobile ? 'auto' : isTablet ? 'auto' : '248px',
-              minHeight: isMobile ? '238px' : isTablet ? '220px' : '248px',
-              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : isTablet ? '#FFFFFF' : '#FFFFFF',
+              alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : isSmallDesktop ? 'flex-start' : 'flex-start',
+              padding: isMobile ? '36px' : isTablet ? '24px 20px 24px' : isSmallDesktop ? '24px 20px 24px' : '24px 32px 32px',
+              width: isMobile ? '339.5px' : isTablet ? 'calc((100% - 80px - 32px - 280px) / 2)' : isSmallDesktop ? 'calc((100% - 80px - 32px - 280px) / 2)' : '388px',
+              maxWidth: isMobile ? '339.5px' : isTablet ? 'none' : isSmallDesktop ? 'none' : '388px',
+              height: isMobile ? 'auto' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : '248px',
+              minHeight: isMobile ? '238px' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : '248px',
+              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : isTablet ? '#FFFFFF' : isSmallDesktop ? '#FFFFFF' : '#FFFFFF',
               borderRadius: '20px',
-              flex: 'none',
+              flex: isMobile ? 'none' : isTablet ? '0 0 auto' : isSmallDesktop ? '0 0 auto' : 'none',
               order: 0,
               flexGrow: 0,
               position: 'relative',
-              marginTop: isMobile ? '0px' : isTablet ? '0px' : '170px',
+              marginTop: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '170px',
               boxSizing: 'border-box',
             }}
           >
@@ -620,11 +644,10 @@ export default function HeroSection() {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
+              alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
               padding: '0px',
-              gap: isMobile ? '16px' : isTablet ? '24px' : '32px',
-              width: isMobile ? '100%' : isTablet ? '100%' : '324px',
-              maxWidth: isMobile ? '100%' : isTablet ? '100%' : '324px',
+              gap: isMobile ? '16px' : isTablet ? '20px' : '32px',
+              width: '100%',
               height: isMobile ? 'auto' : isTablet ? 'auto' : '192px',
               minHeight: isMobile ? 'auto' : isTablet ? 'auto' : '192px',
               flex: 'none',
@@ -641,13 +664,12 @@ export default function HeroSection() {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: isMobile ? 'center' : 'flex-start',
+                alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                 padding: '0px',
                 gap: '16px',
-                width: isMobile ? '100%' : '324px',
-                maxWidth: isMobile ? '100%' : '324px',
-                height: isMobile ? 'auto' : '132px',
-                minHeight: isMobile ? 'auto' : '132px',
+                width: '100%',
+                height: isMobile ? 'auto' : isTablet ? 'auto' : '132px',
+                minHeight: isMobile ? 'auto' : isTablet ? 'auto' : '132px',
                 flex: 'none',
                 order: 0,
                 alignSelf: 'stretch',
@@ -659,12 +681,11 @@ export default function HeroSection() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: isMobile ? 'center' : 'flex-start',
+                  alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                   padding: '0px',
-                  width: isMobile ? '100%' : '324px',
-                  maxWidth: isMobile ? '100%' : '324px',
-                  height: isMobile ? 'auto' : '34px',
-                  minHeight: isMobile ? '26px' : '34px',
+                  width: '100%',
+                  height: isMobile ? 'auto' : isTablet ? 'auto' : '34px',
+                  minHeight: isMobile ? '26px' : isTablet ? 'auto' : '34px',
                   flex: 'none',
                   order: 0,
                   alignSelf: 'stretch',
@@ -674,19 +695,19 @@ export default function HeroSection() {
               >
                 <span
                   style={{
-                    width: isMobile ? '100%' : '324px',
-                    maxWidth: isMobile ? '100%' : '324px',
-                    height: isMobile ? 'auto' : '34px',
-                    minHeight: isMobile ? '26px' : '34px',
+                    width: '100%',
+                    height: isMobile ? 'auto' : isTablet ? 'auto' : '34px',
+                    minHeight: isMobile ? '26px' : isTablet ? 'auto' : '34px',
                     fontFamily: 'var(--font-plus-jakarta)',
                     fontStyle: 'normal',
                     fontWeight: 700,
-                    fontSize: isMobile ? '18px' : '24px',
-                    lineHeight: isMobile ? '25px' : '34px',
+                    fontSize: isMobile ? '18px' : isTablet ? '20px' : '24px',
+                    lineHeight: isMobile ? '25px' : isTablet ? '28px' : '34px',
                     letterSpacing: '-0.5px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: isMobile ? 'center' : 'flex-start',
+                    justifyContent: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
+                    textAlign: isMobile ? 'center' : isTablet ? 'left' : 'left',
                     color: '#0F0F0F',
                     flex: 'none',
                     order: 0,
@@ -703,10 +724,9 @@ export default function HeroSection() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
+                  alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                   padding: '0px',
-                  width: isMobile ? '100%' : isTablet ? '100%' : '324px',
-                  maxWidth: isMobile ? '100%' : isTablet ? '100%' : '324px',
+                  width: '100%',
                   height: isMobile ? 'auto' : isTablet ? 'auto' : '82px',
                   minHeight: isMobile ? '82px' : isTablet ? 'auto' : '82px',
                   flex: 'none',
@@ -717,19 +737,18 @@ export default function HeroSection() {
               >
                 <p
                   style={{
-                    width: isMobile ? '100%' : isTablet ? '100%' : '324px',
-                    maxWidth: isMobile ? '100%' : isTablet ? '100%' : '324px',
+                    width: '100%',
                     height: isMobile ? 'auto' : isTablet ? 'auto' : '82px',
                     minHeight: isMobile ? '82px' : isTablet ? 'auto' : '82px',
                     fontFamily: 'var(--font-plus-jakarta)',
                     fontStyle: 'normal',
                     fontWeight: 400,
-                    fontSize: isMobile ? '16px' : isTablet ? '15px' : '16px',
-                    lineHeight: isMobile ? '27px' : isTablet ? '25px' : '27px',
+                    fontSize: isMobile ? '16px' : isTablet ? '14px' : '16px',
+                    lineHeight: isMobile ? '27px' : isTablet ? '22px' : '27px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
-                    textAlign: isMobile ? 'center' : isTablet ? 'center' : 'left',
+                    justifyContent: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
+                    textAlign: isMobile ? 'center' : isTablet ? 'left' : 'left',
                     color: '#4B4B57',
                     flex: 'none',
                     order: 0,
@@ -750,9 +769,10 @@ export default function HeroSection() {
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
+                  justifyContent: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                   padding: '2px 10px',
                   isolation: 'isolate',
-                  width: isMobile ? '212px' : isTablet ? '200px' : '212px',
+                  width: isMobile ? '212px' : isTablet ? 'auto' : '212px',
                   height: isMobile ? '28px' : isTablet ? '26px' : '28px',
                   background: '#0E0E0E',
                   borderRadius: '20px',
@@ -767,7 +787,7 @@ export default function HeroSection() {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     padding: '0px',
-                    width: isMobile ? '192px' : isTablet ? '180px' : '192px',
+                    width: isMobile ? '192px' : isTablet ? 'auto' : '192px',
                     height: isMobile ? '24px' : isTablet ? '22px' : '24px',
                     flex: 'none',
                     order: 0,
@@ -781,7 +801,7 @@ export default function HeroSection() {
                       flexDirection: 'column',
                       alignItems: 'flex-start',
                       padding: '0px',
-                      width: isMobile ? '192px' : isTablet ? '180px' : '192px',
+                      width: isMobile ? '192px' : isTablet ? 'auto' : '192px',
                       height: isMobile ? '24px' : isTablet ? '22px' : '24px',
                       flex: 'none',
                       order: 0,
@@ -791,12 +811,12 @@ export default function HeroSection() {
                   >
                     <span
                       style={{
-                        width: isMobile ? '192px' : isTablet ? '180px' : '192px',
+                        width: isMobile ? '192px' : isTablet ? 'auto' : '192px',
                         height: isMobile ? '24px' : isTablet ? '22px' : '24px',
                         fontFamily: 'var(--font-plus-jakarta)',
                         fontStyle: 'normal',
                         fontWeight: 400,
-                        fontSize: isMobile ? '14px' : isTablet ? '13px' : '14px',
+                        fontSize: isMobile ? '14px' : isTablet ? '12px' : '14px',
                         lineHeight: isMobile ? '24px' : isTablet ? '22px' : '24px',
                         display: 'flex',
                         alignItems: 'center',
@@ -804,6 +824,7 @@ export default function HeroSection() {
                         flex: 'none',
                         order: 0,
                         flexGrow: 0,
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       Thousands already signed up
@@ -823,13 +844,15 @@ export default function HeroSection() {
               height: isMobile ? 'auto' : isTablet ? 'auto' : '680.94px',
               minHeight: isMobile ? 'auto' : isTablet ? 'auto' : '680.94px',
               aspectRatio: isMobile ? '339.5/617.7' : isTablet ? '280/595' : '320/680.94',
-              flex: 'none',
+              flex: isMobile ? 'none' : isTablet ? '0 0 280px' : 'none',
               order: 1,
               flexGrow: 0,
-              alignSelf: isMobile ? 'center' : 'flex-start',
+              alignSelf: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'flex-start',
+              alignItems: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
+              position: 'relative',
+              zIndex: isTablet ? 1 : 'auto',
             }}
           >
             <Image
@@ -847,22 +870,23 @@ export default function HeroSection() {
             className="flex flex-col justify-start items-center"
             style={{
               display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
+              flexDirection: 'column',
               justifyContent: 'center',
-              alignItems: 'center',
-              padding: isMobile ? '36px' : '62px 0px 0px',
-              margin: '0 auto',
-              width: isMobile ? '100%' : '388px',
-              maxWidth: isMobile ? '100%' : '388px',
-              height: isMobile ? 'auto' : '370px',
-              minHeight: isMobile ? '266px' : '370px',
-              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : '#F3F3F3',
+              alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : isSmallDesktop ? 'flex-start' : 'center',
+              padding: isMobile ? '36px' : isTablet ? '24px 20px 24px' : isSmallDesktop ? '24px 20px 24px' : '62px 0px 0px',
+              margin: isMobile ? '0 auto' : isTablet ? '0' : isSmallDesktop ? '0' : '0 auto',
+              width: isMobile ? '339.5px' : isTablet ? 'calc((100% - 80px - 32px - 280px) / 2)' : isSmallDesktop ? 'calc((100% - 80px - 32px - 280px) / 2)' : '388px',
+              maxWidth: isMobile ? '339.5px' : isTablet ? 'none' : isSmallDesktop ? 'none' : '388px',
+              height: isMobile ? 'auto' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : '370px',
+              minHeight: isMobile ? '266px' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : '370px',
+              background: isMobile ? 'linear-gradient(180deg, #F3F3F3 0%, #F9FAFB 100%)' : isTablet ? '#F3F3F3' : isSmallDesktop ? '#F3F3F3' : '#F3F3F3',
               borderRadius: '20px',
-              flex: 'none',
+              flex: isMobile ? 'none' : isTablet ? '0 0 auto' : isSmallDesktop ? '0 0 auto' : 'none',
               order: 2,
               flexGrow: 0,
               position: 'relative',
-              marginTop: isMobile ? '0px' : '80px',
+              zIndex: (isTablet || isSmallDesktop) ? 10 : 'auto',
+              marginTop: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '80px',
               boxSizing: 'border-box',
             }}
           >
@@ -889,9 +913,9 @@ export default function HeroSection() {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
+                alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                 padding: isMobile ? '0px' : isTablet ? '0px' : '0px 32px 32px 32px',
-                gap: isMobile ? '16px' : isTablet ? '24px' : '32px',
+                gap: isMobile ? '16px' : isTablet ? '20px' : '32px',
                 width: '100%',
                 flex: 'none',
                 order: 0,
@@ -907,7 +931,7 @@ export default function HeroSection() {
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  justifyContent: isMobile ? 'center' : isTablet ? 'center' : 'flex-start',
+                  justifyContent: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                   alignItems: 'center',
                   gap: isMobile ? '4px' : isTablet ? '3px' : '4px',
                   width: isMobile ? '100%' : 'auto',
@@ -967,19 +991,19 @@ export default function HeroSection() {
                 >
                   <span
                     style={{
-                      width: isMobile ? '100%' : '324px',
-                      maxWidth: isMobile ? '267.5px' : '324px',
-                      height: isMobile ? 'auto' : '34px',
-                      minHeight: isMobile ? '26px' : '34px',
+                      width: '100%',
+                      height: isMobile ? 'auto' : isTablet ? 'auto' : '34px',
+                      minHeight: isMobile ? '26px' : isTablet ? 'auto' : '34px',
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
                       fontWeight: 700,
-                    fontSize: isMobile ? '18px' : isTablet ? '22px' : '24px',
-                    lineHeight: isMobile ? '25px' : isTablet ? '30px' : '34px',
-                    letterSpacing: '-0.5px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    textAlign: isMobile ? 'center' : isTablet ? 'center' : 'left',
+                      fontSize: isMobile ? '18px' : isTablet ? '20px' : '24px',
+                      lineHeight: isMobile ? '25px' : isTablet ? '28px' : '34px',
+                      letterSpacing: '-0.5px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: isMobile ? 'center' : 'flex-start',
+                      textAlign: isMobile ? 'center' : isTablet ? 'left' : 'left',
                       color: '#0F0F0F',
                       flex: 'none',
                       order: 0,
@@ -996,10 +1020,9 @@ export default function HeroSection() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: isMobile ? 'center' : 'flex-start',
+                    alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                     padding: '0px',
-                    width: isMobile ? '100%' : '324px',
-                    maxWidth: isMobile ? '267.5px' : '324px',
+                    width: '100%',
                     flex: 'none',
                     order: 1,
                     alignSelf: 'stretch',
@@ -1008,16 +1031,15 @@ export default function HeroSection() {
                 >
                   <p
                     style={{
-                      width: isMobile ? '100%' : '324px',
-                      maxWidth: isMobile ? '267.5px' : '324px',
+                      width: '100%',
                       fontFamily: 'var(--font-plus-jakarta)',
                       fontStyle: 'normal',
                       fontWeight: 400,
-                      fontSize: isMobile ? '14px' : isTablet ? '15px' : '16px',
-                      lineHeight: isMobile ? '24px' : isTablet ? '25px' : '27px',
+                      fontSize: isMobile ? '14px' : isTablet ? '14px' : '16px',
+                      lineHeight: isMobile ? '24px' : isTablet ? '22px' : '27px',
                       display: 'flex',
                       alignItems: 'center',
-                      textAlign: isMobile ? 'center' : isTablet ? 'center' : 'left',
+                      textAlign: isMobile ? 'center' : isTablet ? 'left' : 'left',
                       color: '#4B4B57',
                       flex: 'none',
                       order: 0,
@@ -1036,7 +1058,7 @@ export default function HeroSection() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: isMobile ? 'center' : 'flex-start',
+                  alignItems: isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start',
                   padding: '0px',
                   width: isMobile ? '100%' : 'auto',
                   flex: 'none',
@@ -1051,12 +1073,12 @@ export default function HeroSection() {
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    padding: isMobile ? '15px 32px' : '15px 32px',
+                    padding: isMobile ? '15px 32px' : isTablet ? '12px 24px' : '15px 32px',
                     isolation: 'isolate',
-                    width: isMobile ? 'auto' : 'auto',
+                    width: isMobile ? 'auto' : isTablet ? 'auto' : 'auto',
                     minWidth: isMobile ? 'auto' : 'auto',
-                    height: isMobile ? 'auto' : '40px',
-                    minHeight: isMobile ? '40px' : '40px',
+                    height: isMobile ? 'auto' : isTablet ? '36px' : '40px',
+                    minHeight: isMobile ? '40px' : isTablet ? '36px' : '40px',
                     background: '#9ECE58',
                     borderRadius: '58px',
                     border: 'none',
@@ -1097,8 +1119,8 @@ export default function HeroSection() {
                           fontFamily: 'var(--font-plus-jakarta)',
                           fontStyle: 'normal',
                           fontWeight: 500,
-                          fontSize: isMobile ? '16px' : isTablet ? '15px' : '16px',
-                          lineHeight: isMobile ? '27px' : isTablet ? '25px' : '27px',
+                          fontSize: isMobile ? '16px' : isTablet ? '14px' : '16px',
+                          lineHeight: isMobile ? '27px' : isTablet ? '22px' : '27px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',

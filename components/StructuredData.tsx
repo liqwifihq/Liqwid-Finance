@@ -3,9 +3,12 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'FinancialService',
     name: 'Liqwifi',
+    alternateName: 'Liqwid Finance',
     description: 'All-in-one finance app for money transfers, credit-score loans, and investments',
     url: 'https://liqwifi.com',
-    logo: 'https://liqwifi.com/Liqwifi_logo.svg',
+    logo: 'https://liqwifi.com/Liqwifi_logo.png',
+    image: 'https://liqwifi.com/seo_image.png',
+    slogan: 'Your Money, Loans & Investments in One Powerful App',
     sameAs: [
       // Add your social media URLs here when available
       // 'https://twitter.com/liqwifi',
@@ -85,4 +88,5 @@ export default function StructuredData() {
     </>
   )
 }
+
 

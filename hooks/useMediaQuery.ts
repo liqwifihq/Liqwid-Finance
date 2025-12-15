@@ -26,3 +26,7 @@ export function useIsTablet(): boolean {
   return useMediaQuery('(min-width: 769px) and (max-width: 1024px)')
 }
 
+export function useIsSmallDesktop(): boolean {
+  return useMediaQuery('(min-width: 1025px) and (max-width: 1183px)')
+}
+

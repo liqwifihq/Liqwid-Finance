@@ -5,7 +5,7 @@
   .hero-section-mobile {
     padding: 130px 20px 0px !important;
     width: 100% !important;
-    max-width: 390px !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
   }
 
@@ -26,7 +26,7 @@
 
   .hero-container-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     gap: 50px !important;
     padding-top: 0px !important;
     padding-bottom: 0px !important;
@@ -34,7 +34,7 @@
 
   .hero-content-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     gap: 24px !important;
     margin-bottom: 0px !important;
   }
@@ -126,7 +126,7 @@
   .footer-mobile {
     padding: 30px 20px !important;
     width: 100% !important;
-    max-width: 390px !important;
+    max-width: 100% !important;
     height: auto !important;
     min-height: 588.11px !important;
   }
@@ -192,7 +192,7 @@
 
   .footer-copyright-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     text-align: center !important;
     height: auto !important;
     min-height: 55px !important;
@@ -209,14 +209,14 @@
 
   .faq-container-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     gap: 40px !important;
     height: auto !important;
   }
 
   .faq-title-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     gap: 16px !important;
     height: auto !important;
     min-height: 201.41px !important;
@@ -227,12 +227,12 @@
     line-height: 43px !important;
     letter-spacing: -1px !important;
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
   }
 
   .faq-item-mobile {
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     padding: 23.3px 24px 24px !important;
   }
 
@@ -254,7 +254,7 @@
   .experience-section-mobile {
     padding: 20px 20px 30px !important;
     width: 100% !important;
-    max-width: 390px !important;
+    max-width: 100% !important;
     height: auto !important;
     min-height: 698.56px !important;
   }
@@ -263,7 +263,7 @@
     padding: 20px 20px 0px !important;
     gap: 30px !important;
     width: 100% !important;
-    max-width: 350px !important;
+    max-width: 100% !important;
     height: auto !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -391,7 +391,14 @@
   /* Ensure all sections respect mobile width */
   section {
     width: 100% !important;
-    max-width: 390px !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure main content containers fill viewport */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   /* Center align text on mobile where specified */
