@@ -171,12 +171,22 @@ export async function POST(request: NextRequest) {
     // Save to Google Sheets using Google Apps Script webhook (NO Google Cloud account needed!)
     // This is the SIMPLE method - just needs a Google Apps Script web app URL
     console.log('🔍 Checking Google Sheets configuration...')
-    console.log('🔍 GOOGLE_SHEETS_WEBHOOK_URL:', process.env.GOOGLE_SHEETS_WEBHOOK_URL ? 'SET' : 'NOT SET')
+    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL
+    console.log('🔍 GOOGLE_SHEETS_WEBHOOK_URL:', webhookUrl ? `SET (${webhookUrl.substring(0, 50)}...)` : 'NOT SET')
     
-    if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
+    if (webhookUrl) {
       console.log('📤 Attempting to save to Google Sheets via Apps Script webhook...')
       try {
-        const webhookData = {
+        const webhookData: {
+          firstName: any
+          lastName: any
+          email: any
+          phone: string
+          country: string
+          interests: string
+          hearAboutUs: string
+          password?: string
+        } = {
           firstName,
           lastName,
           email,
@@ -191,32 +201,81 @@ export async function POST(request: NextRequest) {
           webhookData.password = process.env.GOOGLE_SHEETS_PASSWORD
         }
 
-        console.log('📤 Sending data to webhook:', process.env.GOOGLE_SHEETS_WEBHOOK_URL)
-        console.log('📤 Webhook data:', JSON.stringify(webhookData))
+        console.log('📤 Webhook URL:', webhookUrl)
+        console.log('📤 Webhook payload:', JSON.stringify(webhookData, null, 2))
 
-        const response = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
+        // Make the request with timeout
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
+
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(webhookData),
+          signal: controller.signal,
         })
 
-        console.log('📥 Webhook response status:', response.status, response.statusText)
+        clearTimeout(timeoutId)
+
+        console.log('📥 Response status:', response.status, response.statusText)
+        console.log('📥 Response headers:', JSON.stringify(Object.fromEntries(response.headers.entries())))
+
+        // Get response text first (Google Apps Script might return HTML or JSON)
+        const responseText = await response.text()
+        const responsePreview = responseText.length > 500 
+          ? responseText.substring(0, 500) + '...' 
+          : responseText
+        console.log('📥 Response body:', responsePreview)
 
         if (response.ok) {
-          const result = await response.json()
-          console.log('✅ Data saved to Google Sheets via Apps Script:', result)
+          // Try to parse as JSON, but handle HTML responses gracefully
+          let result
+          try {
+            result = JSON.parse(responseText)
+            console.log('✅ Data saved to Google Sheets via Apps Script (JSON response):', result)
+          } catch (parseError: any) {
+            // If it's not JSON, it might be HTML (Google Apps Script sometimes returns HTML on success)
+            // Google Apps Script web apps can return HTML even on successful execution
+            if (response.status === 200) {
+              console.log('✅ Data saved to Google Sheets (HTML response, status 200 - likely success)')
+              console.log('📋 Note: Google Apps Script may return HTML even on success')
+            } else {
+              console.warn('⚠️ Unexpected response format from Google Sheets webhook')
+              console.warn('📋 Parse error:', parseError.message)
+            }
+          }
         } else {
-          const errorText = await response.text()
-          console.error('❌ Google Sheets webhook error:', response.status, errorText)
-          // Continue even if Sheets fails - we still want to send the email
+          console.error('❌ Google Sheets webhook HTTP error')
+          console.error('❌ Status:', response.status, response.statusText)
+          console.error('❌ Response body:', responseText)
+          
+          // Provide helpful error messages
+          if (response.status === 401 || response.status === 403) {
+            console.error('❌ Authorization error - check Apps Script deployment permissions')
+          } else if (response.status === 404) {
+            console.error('❌ Webhook URL not found - verify the URL is correct')
+          } else if (response.status >= 500) {
+            console.error('❌ Server error - check Apps Script execution logs')
+          }
         }
       } catch (sheetsError: any) {
-        console.error('❌ Google Sheets webhook exception:', sheetsError.message || sheetsError)
-        console.error('❌ Stack:', sheetsError.stack)
+        // Handle different types of errors
+        if (sheetsError.name === 'AbortError') {
+          console.error('❌ Google Sheets webhook timeout (exceeded 10 seconds)')
+        } else if (sheetsError.message?.includes('fetch failed')) {
+          console.error('❌ Google Sheets webhook network error:', sheetsError.message)
+          console.error('❌ This might be a CORS issue or network connectivity problem')
+        } else {
+          console.error('❌ Google Sheets webhook exception:', sheetsError.message || sheetsError)
+        }
+        console.error('❌ Error stack:', sheetsError.stack)
         // Continue even if Sheets fails - we still want to send the email
       }
+    } else {
+      console.log('ℹ️ Google Sheets webhook URL not configured - skipping data storage')
+      console.log('ℹ️ To enable: Set GOOGLE_SHEETS_WEBHOOK_URL environment variable in Vercel')
     }
     // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
     else if (
