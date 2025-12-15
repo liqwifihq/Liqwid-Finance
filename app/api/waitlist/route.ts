@@ -203,24 +203,40 @@ export async function POST(request: NextRequest) {
     // Save contact to SendGrid Marketing Contacts (so you can see it in SendGrid dashboard)
     if (process.env.SENDGRID_API_KEY) {
       try {
+        // Build contact data - start with required fields
+        const contact: any = {
+          email: email,
+          first_name: firstName,
+          last_name: lastName,
+        }
+
+        // Add phone if provided
+        if (phone && phone.trim()) {
+          contact.phone_number = phone
+        }
+
+        // Add custom fields only if they have values (to avoid errors if fields don't exist)
+        const customFields: any = {}
+        if (country && country.trim()) {
+          customFields.e1 = country
+        }
+        if (interestsString && interestsString.trim()) {
+          customFields.e2 = interestsString
+        }
+        if (hearAboutUs && hearAboutUs.trim()) {
+          customFields.e3 = hearAboutUs
+        }
+        if (timestamp) {
+          customFields.e4 = timestamp
+        }
+
+        // Only add custom_fields if we have any
+        if (Object.keys(customFields).length > 0) {
+          contact.custom_fields = customFields
+        }
+
         const contactData = {
-          contacts: [
-            {
-              email: email,
-              first_name: firstName,
-              last_name: lastName,
-              phone_number: phone || undefined,
-              custom_fields: {
-                // Store additional form data in custom fields
-                // Note: You'll need to create these custom fields in SendGrid first
-                // Go to SendGrid > Settings > Custom Fields to create them
-                e1: country || '', // Country (custom field e1)
-                e2: interestsString || '', // Interests (custom field e2)
-                e3: hearAboutUs || '', // How did you hear about us (custom field e3)
-                e4: timestamp, // Submission timestamp (custom field e4)
-              }
-            }
-          ]
+          contacts: [contact]
         }
 
         // Use fetch to call SendGrid Marketing Contacts API
@@ -234,13 +250,21 @@ export async function POST(request: NextRequest) {
         })
 
         if (response.ok) {
-          console.log('✅ Contact saved to SendGrid Marketing Contacts')
+          const result = await response.json()
+          console.log('✅ Contact saved to SendGrid Marketing Contacts:', result)
         } else {
-          const errorData = await response.json()
-          console.error('⚠️ SendGrid contact save error:', errorData)
+          const errorText = await response.text()
+          let errorData
+          try {
+            errorData = JSON.parse(errorText)
+          } catch {
+            errorData = errorText
+          }
+          console.error('⚠️ SendGrid contact save error:', response.status, errorData)
+          // Don't throw - continue with email sending
         }
       } catch (contactError: any) {
-        console.error('⚠️ SendGrid contact save error (continuing anyway):', contactError)
+        console.error('⚠️ SendGrid contact save error (continuing anyway):', contactError.message || contactError)
         // Continue even if contact save fails - we still want to send the email
       }
     }
