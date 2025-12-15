@@ -200,6 +200,51 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Save contact to SendGrid Marketing Contacts (so you can see it in SendGrid dashboard)
+    if (process.env.SENDGRID_API_KEY) {
+      try {
+        const contactData = {
+          contacts: [
+            {
+              email: email,
+              first_name: firstName,
+              last_name: lastName,
+              phone_number: phone || undefined,
+              custom_fields: {
+                // Store additional form data in custom fields
+                // Note: You'll need to create these custom fields in SendGrid first
+                // Go to SendGrid > Settings > Custom Fields to create them
+                e1: country || '', // Country (custom field e1)
+                e2: interestsString || '', // Interests (custom field e2)
+                e3: hearAboutUs || '', // How did you hear about us (custom field e3)
+                e4: timestamp, // Submission timestamp (custom field e4)
+              }
+            }
+          ]
+        }
+
+        // Use fetch to call SendGrid Marketing Contacts API
+        const response = await fetch('https://api.sendgrid.com/v3/marketing/contacts', {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(contactData)
+        })
+
+        if (response.ok) {
+          console.log('✅ Contact saved to SendGrid Marketing Contacts')
+        } else {
+          const errorData = await response.json()
+          console.error('⚠️ SendGrid contact save error:', errorData)
+        }
+      } catch (contactError: any) {
+        console.error('⚠️ SendGrid contact save error (continuing anyway):', contactError)
+        // Continue even if contact save fails - we still want to send the email
+      }
+    }
+
     // Send welcome email via SendGrid (REQUIRED for basic functionality)
     if (process.env.SENDGRID_API_KEY && process.env.SENDGRID_FROM_EMAIL) {
       try {
@@ -216,6 +261,35 @@ export async function POST(request: NextRequest) {
 
         await sgMail.send(msg)
         console.log('✅ Welcome email sent via SendGrid')
+
+        // Send admin notification email with form data (optional)
+        if (process.env.SENDGRID_ADMIN_EMAIL) {
+          try {
+            const adminMsg = {
+              to: process.env.SENDGRID_ADMIN_EMAIL,
+              from: {
+                email: process.env.SENDGRID_FROM_EMAIL,
+                name: 'Liqwifi Waitlist'
+              },
+              subject: `New Waitlist Signup: ${firstName} ${lastName}`,
+              html: `
+                <h2>New Waitlist Signup</h2>
+                <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+                <p><strong>Country:</strong> ${country || 'Not provided'}</p>
+                <p><strong>Interests:</strong> ${interestsString || 'None'}</p>
+                <p><strong>How did they hear about us:</strong> ${hearAboutUs || 'Not provided'}</p>
+                <p><strong>Submitted:</strong> ${new Date(timestamp).toLocaleString()}</p>
+              `,
+              text: `New Waitlist Signup\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nCountry: ${country || 'Not provided'}\nInterests: ${interestsString || 'None'}\nHow did they hear about us: ${hearAboutUs || 'Not provided'}\nSubmitted: ${new Date(timestamp).toLocaleString()}`
+            }
+            await sgMail.send(adminMsg)
+            console.log('✅ Admin notification email sent')
+          } catch (adminError: any) {
+            console.error('⚠️ Admin email error (non-critical):', adminError)
+          }
+        }
       } catch (emailError: any) {
         console.error('❌ SendGrid error:', emailError)
         // If email fails, we should still return success but log the error
@@ -245,3 +319,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
