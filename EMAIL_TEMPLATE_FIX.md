@@ -69,3 +69,4 @@ If you see any of these in the email, the old template is still being used:
 - ❌ Gradient header background
 - ❌ Subject with emoji
 - ❌ Long paragraphs with multiple sections
+

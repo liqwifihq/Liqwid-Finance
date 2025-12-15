@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useIsMobile } from '@/hooks/useMediaQuery'
 
 export default function Footer() {
@@ -77,7 +78,8 @@ export default function Footer() {
             }}
           >
             {/* Logo */}
-            <div
+            <Link
+              href="/"
               style={{
                 width: isMobile ? '104px' : '104px',
                 height: isMobile ? 'auto' : '38.11px',
@@ -88,11 +90,20 @@ export default function Footer() {
                 display: 'flex',
                 justifyContent: isMobile ? 'center' : 'flex-start',
                 alignItems: 'center',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'opacity 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = '0.8'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = '1'
               }}
             >
               <Image
                 src="/Liqwifi_logo.svg"
-                alt="Liqwifi Logo"
+                alt="Liqwifi Logo - Go to Homepage"
                 width={104}
                 height={38}
                 quality={100}
@@ -101,7 +112,7 @@ export default function Footer() {
                   height: 'auto',
                 }}
               />
-            </div>
+            </Link>
 
             {/* Company Description */}
             <p

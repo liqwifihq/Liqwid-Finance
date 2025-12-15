@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useIsMobile, useIsTablet } from '@/hooks/useMediaQuery'
 import { useState } from 'react'
 
@@ -34,13 +35,16 @@ export default function Navigation() {
       }}
     >
       {/* Logo */}
-      <div
+      <Link
+        href="/"
         className="flex items-center"
         style={{
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
           paddingLeft: isMobile ? '0px' : isTablet ? '12px' : '24px',
+          textDecoration: 'none',
+          cursor: 'pointer',
         }}
       >
         {/* Logo Icon */}
@@ -52,11 +56,18 @@ export default function Navigation() {
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
+            transition: 'opacity 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = '0.8'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = '1'
           }}
         >
           <Image
             src="/Liqwifi_logo.svg"
-            alt="Liqwifi Logo"
+            alt="Liqwifi Logo - Go to Homepage"
             width={109}
             height={43}
             style={{
@@ -67,7 +78,7 @@ export default function Navigation() {
             unoptimized
           />
         </div>
-      </div>
+      </Link>
 
       {/* Mobile/Tablet Menu Button */}
       {(isMobile || isTablet) && (

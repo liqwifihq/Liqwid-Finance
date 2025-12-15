@@ -85,3 +85,4 @@ After fixing the DMARC record:
 5. ✅ Verify in SendGrid dashboard
 
 **All other records look correct!** Just fix the DMARC record type. 🎯
+

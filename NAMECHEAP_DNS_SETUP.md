@@ -181,3 +181,4 @@ If records still don't work after 30 minutes:
 **The key issue:** You're probably entering the full domain (`url2355.liqwifi.com`) in the Host field, but Namecheap auto-appends `.liqwifi.com`, so you should only enter the subdomain part (`url2355`).
 
 **Fix:** Delete the existing records and re-add them using **only the subdomain** in the Host field!
+

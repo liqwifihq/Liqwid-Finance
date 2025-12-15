@@ -125,3 +125,4 @@ If you want Google Sheets but don't want to set up Google Cloud, you can:
 4. Update the API route to call your webhook instead
 
 This way you get Google Sheets storage without setting up Google Cloud!
+

@@ -12,3 +12,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://liqwifi.com/sitemap.xml',
   }
 }
+

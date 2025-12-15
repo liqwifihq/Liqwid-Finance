@@ -68,3 +68,4 @@ https://liqwifi.com/Liqwifi_logo.png
 ```
 
 Once you add the PNG file and deploy, the logo will show in emails!
+

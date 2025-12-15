@@ -156,3 +156,4 @@ The welcome email includes:
 ---
 
 For detailed setup instructions, see `SETUP.md`.
+

@@ -32,3 +32,4 @@ To test the email:
    - Logo displays correctly
    - Display name shows "Liqwid Finance"
    - Content is simplified and professional
+
