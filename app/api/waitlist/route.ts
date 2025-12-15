@@ -201,9 +201,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Save contact to SendGrid Marketing Contacts (so you can see it in SendGrid dashboard)
+    // IMPORTANT: This saves basic contact info (name, email, phone) to SendGrid
+    // Additional form data (country, interests, etc.) is stored but may not be visible
+    // unless you create custom fields in SendGrid
     if (process.env.SENDGRID_API_KEY) {
       try {
-        // Build contact data - start with required fields
+        // Build contact data with only basic fields (no custom fields to avoid errors)
         const contact: any = {
           email: email,
           first_name: firstName,
@@ -215,29 +218,11 @@ export async function POST(request: NextRequest) {
           contact.phone_number = phone
         }
 
-        // Add custom fields only if they have values (to avoid errors if fields don't exist)
-        const customFields: any = {}
-        if (country && country.trim()) {
-          customFields.e1 = country
-        }
-        if (interestsString && interestsString.trim()) {
-          customFields.e2 = interestsString
-        }
-        if (hearAboutUs && hearAboutUs.trim()) {
-          customFields.e3 = hearAboutUs
-        }
-        if (timestamp) {
-          customFields.e4 = timestamp
-        }
-
-        // Only add custom_fields if we have any
-        if (Object.keys(customFields).length > 0) {
-          contact.custom_fields = customFields
-        }
-
         const contactData = {
           contacts: [contact]
         }
+
+        console.log('📤 Attempting to save contact to SendGrid:', { email, firstName, lastName })
 
         // Use fetch to call SendGrid Marketing Contacts API
         const response = await fetch('https://api.sendgrid.com/v3/marketing/contacts', {
@@ -249,24 +234,45 @@ export async function POST(request: NextRequest) {
           body: JSON.stringify(contactData)
         })
 
+        const responseText = await response.text()
+        
         if (response.ok) {
-          const result = await response.json()
-          console.log('✅ Contact saved to SendGrid Marketing Contacts:', result)
-        } else {
-          const errorText = await response.text()
-          let errorData
+          let result
           try {
-            errorData = JSON.parse(errorText)
+            result = JSON.parse(responseText)
           } catch {
-            errorData = errorText
+            result = responseText
           }
-          console.error('⚠️ SendGrid contact save error:', response.status, errorData)
+          console.log('✅ Contact saved to SendGrid Marketing Contacts successfully')
+          console.log('📋 Response:', result)
+        } else {
+          console.error('❌ SendGrid contact save FAILED')
+          console.error('Status:', response.status, response.statusText)
+          console.error('Response:', responseText)
+          
+          // Try to parse error for more details
+          try {
+            const errorData = JSON.parse(responseText)
+            console.error('Error details:', errorData)
+            
+            // If it's a permissions error, log it clearly
+            if (response.status === 403) {
+              console.error('⚠️ PERMISSION ERROR: Your API key may not have Marketing Contacts permissions')
+              console.error('⚠️ Go to SendGrid → Settings → API Keys → Edit your key')
+              console.error('⚠️ Make sure "Marketing" or "Full Access" permissions are enabled')
+            }
+          } catch {
+            // Error response is not JSON, that's okay
+          }
           // Don't throw - continue with email sending
         }
       } catch (contactError: any) {
-        console.error('⚠️ SendGrid contact save error (continuing anyway):', contactError.message || contactError)
+        console.error('❌ SendGrid contact save EXCEPTION:', contactError.message || contactError)
+        console.error('Stack:', contactError.stack)
         // Continue even if contact save fails - we still want to send the email
       }
+    } else {
+      console.warn('⚠️ SENDGRID_API_KEY not set - skipping contact save')
     }
 
     // Send welcome email via SendGrid (REQUIRED for basic functionality)
@@ -343,4 +349,5 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
 
