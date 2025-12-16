@@ -119,13 +119,13 @@ export default function HeroSection() {
       <div 
         className="absolute top-0 z-20"
         style={{
-          marginTop: isMobile ? '24px' : isTablet ? '20px' : isSmallDesktop ? '20px' : '24px',
-          left: isMobile ? '0px' : isTablet ? '50%' : isSmallDesktop ? '50%' : '50%',
-          right: isMobile ? '0px' : 'auto',
-          transform: isMobile ? 'none' : 'translateX(-50%)',
-          width: isMobile ? '100%' : isTablet ? 'auto' : isSmallDesktop ? 'auto' : 'auto',
-          paddingLeft: isMobile ? '20px' : isTablet ? '24px' : isSmallDesktop ? '24px' : '0px',
-          paddingRight: isMobile ? '20px' : isTablet ? '24px' : isSmallDesktop ? '24px' : '0px',
+          marginTop: isMobile ? '24px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '24px',
+          left: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '50%',
+          right: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : 'auto',
+          transform: isMobile ? 'none' : (isTablet || isSmallDesktop) ? 'none' : 'translateX(-50%)',
+          width: isMobile ? '100%' : isTablet ? '100%' : isSmallDesktop ? '100%' : 'auto',
+          paddingLeft: isMobile ? '20px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '0px',
+          paddingRight: isMobile ? '20px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '0px',
           boxSizing: 'border-box',
         }}
       >
