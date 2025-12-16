@@ -126,8 +126,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakarta.variable} font-sans antialiased`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="not-loaded">
+      <body className={`${plusJakarta.variable} font-sans antialiased not-loaded`} suppressHydrationWarning>
         <StructuredData />
         <LoadingScreen />
         {children}

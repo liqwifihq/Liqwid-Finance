@@ -11,11 +11,14 @@ export default function LoadingScreen() {
   const isTablet = useIsTablet()
 
   useEffect(() => {
-    // Prevent body scroll while loading
-    document.body.style.overflow = 'hidden'
+    // Ensure classes are set correctly on mount
+    document.body.classList.remove('loaded')
+    document.body.classList.add('not-loaded')
+    document.documentElement.classList.remove('loaded')
+    document.documentElement.classList.add('not-loaded')
 
     // Minimum display time for smooth experience
-    const minDisplayTime = 800 // 800ms minimum
+    const minDisplayTime = 500 // 500ms minimum for smoother experience
     const startTime = Date.now()
 
     // Hide loading screen once page is fully loaded
@@ -27,9 +30,11 @@ export default function LoadingScreen() {
         setIsFading(true)
         setTimeout(() => {
           setIsLoading(false)
-          document.body.style.overflow = ''
+          document.body.classList.remove('not-loaded')
           document.body.classList.add('loaded')
-        }, 500) // Match fadeOut animation duration
+          document.documentElement.classList.remove('not-loaded')
+          document.documentElement.classList.add('loaded')
+        }, 300) // Faster fadeOut for smoother transition
       }, remainingTime)
     }
 
@@ -40,7 +45,10 @@ export default function LoadingScreen() {
       window.addEventListener('load', handleLoad)
       return () => {
         window.removeEventListener('load', handleLoad)
-        document.body.style.overflow = ''
+        document.body.classList.remove('not-loaded')
+        document.body.classList.add('loaded')
+        document.documentElement.classList.remove('not-loaded')
+        document.documentElement.classList.add('loaded')
       }
     }
   }, [])
@@ -64,7 +72,7 @@ export default function LoadingScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 9999,
-        animation: isFading ? 'fadeOut 0.5s ease-out forwards' : 'fadeIn 0.3s ease-in',
+        animation: isFading ? 'fadeOut 0.4s ease-out forwards' : 'fadeIn 0.2s ease-in',
         pointerEvents: isFading ? 'none' : 'auto',
       }}
     >

@@ -20,9 +20,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Prevent flash of unstyled content */
-body:not(.loaded) {
-  overflow: hidden;
+/* Prevent flash of unstyled content - Hide body until loaded */
+html.not-loaded,
+body.not-loaded {
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+
+html.loaded,
+body.loaded {
+  visibility: visible !important;
+  overflow: visible !important;
 }
 
 body.loaded {

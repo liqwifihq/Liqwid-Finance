@@ -51,7 +51,7 @@ export default function Navigation() {
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
-          paddingLeft: '0px',
+          paddingLeft: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '24px',
           paddingRight: '0px',
           textDecoration: 'none',
           cursor: 'pointer',

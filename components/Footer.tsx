@@ -396,7 +396,8 @@ export default function Footer() {
               flexGrow: 0,
             }}
           >
-            <span
+            <a
+              href="mailto:support@liqwifi.com"
               style={{
                 fontFamily: 'var(--font-plus-jakarta)',
                 fontStyle: 'normal',
@@ -406,10 +407,19 @@ export default function Footer() {
                 display: 'flex',
                 alignItems: 'center',
                 color: '#4B4B57',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#0F0F0F'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#4B4B57'
               }}
             >
               support@liqwifi.com
-            </span>
+            </a>
           </div>
         </div>
       </div>
