@@ -3,16 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useIsMobile } from '@/hooks/useMediaQuery'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function Footer() {
   const isMobile = useIsMobile()
-  const footerRef = useScrollAnimation()
   
   return (
     <footer
-      ref={footerRef as React.RefObject<HTMLElement>}
-      className="fade-in-up"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -400,8 +396,7 @@ export default function Footer() {
               flexGrow: 0,
             }}
           >
-            <a
-              href="mailto:support@liqwifi.com"
+            <span
               style={{
                 fontFamily: 'var(--font-plus-jakarta)',
                 fontStyle: 'normal',
@@ -411,21 +406,10 @@ export default function Footer() {
                 display: 'flex',
                 alignItems: 'center',
                 color: '#4B4B57',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease, opacity 0.2s ease',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#0F0F0F'
-                e.currentTarget.style.opacity = '0.8'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#4B4B57'
-                e.currentTarget.style.opacity = '1'
               }}
             >
               support@liqwifi.com
-            </a>
+            </span>
           </div>
         </div>
       </div>

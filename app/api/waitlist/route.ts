@@ -268,13 +268,13 @@ export async function POST(request: NextRequest) {
           console.error('❌ Google Sheets webhook network error:', sheetsError.message)
           console.error('❌ This might be a CORS issue or network connectivity problem')
         } else {
-          console.error('❌ Google Sheets webhook exception:', sheetsError.message || sheetsError)
+        console.error('❌ Google Sheets webhook exception:', sheetsError.message || sheetsError)
         }
         console.error('❌ Error stack:', sheetsError.stack)
         // Continue even if Sheets fails - we still want to send the email
       }
     } else if (
-      // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
+    // Alternative: Save to Google Sheets using Service Account (requires Google Cloud setup)
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
       process.env.GOOGLE_PRIVATE_KEY &&
       process.env.GOOGLE_SPREADSHEET_ID

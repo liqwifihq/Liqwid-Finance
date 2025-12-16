@@ -178,8 +178,8 @@ export default function HeroSection() {
               <span 
                 style={{
                   fontFamily: 'var(--font-plus-jakarta)',
-                  fontSize: isMobile ? '13px' : isTablet ? '12px' : '13px',
-                  lineHeight: isMobile ? '22px' : isTablet ? '20px' : '22px',
+                  fontSize: isMobile ? '14px' : isTablet ? '13px' : '14px',
+                  lineHeight: isMobile ? '24px' : isTablet ? '22px' : '24px',
                   fontWeight: 400,
                   color: '#4B4B57',
                   textAlign: 'center',

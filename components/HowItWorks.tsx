@@ -2,19 +2,15 @@
 
 import Image from 'next/image'
 import { useIsMobile, useIsTablet, useIsSmallDesktop } from '@/hooks/useMediaQuery'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function HowItWorks() {
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
   const isSmallDesktop = useIsSmallDesktop()
-  const sectionRef = useScrollAnimation()
   
   return (
     <div 
       id="getting-started" 
-      ref={sectionRef as React.RefObject<HTMLDivElement>}
-      className="fade-in-up"
       style={{ 
         position: 'relative', 
         width: '100%', 
@@ -389,18 +385,18 @@ export default function HowItWorks() {
             >
               {/* Tab 1 - Join the Waitlist - Only show on tablet */}
               {isTablet && (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start',
                     padding: '0px',
                     gap: '10px',
                     width: '100%',
-                    flex: 'none',
+                  flex: 'none',
                     order: 0,
-                    flexGrow: 0,
+                  flexGrow: 0,
                   }}
                 >
                   <h3
@@ -434,10 +430,10 @@ export default function HowItWorks() {
                 </div>
               )}
               {/* Tab 2 */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
                   justifyContent: 'flex-start',
                   alignItems: 'flex-start',
                   padding: isMobile ? '0px' : isTablet ? '0px' : '36px 20px 36px 16px',
@@ -448,13 +444,13 @@ export default function HowItWorks() {
                   height: isMobile ? 'auto' : isTablet ? 'auto' : '196px',
                   minHeight: isMobile ? 'auto' : isTablet ? 'auto' : '196px',
                   background: isMobile ? 'transparent' : isTablet ? 'transparent' : '#F9FAFB',
-                  flex: 'none',
+                    flex: 'none',
                   order: 1,
                   alignSelf: 'stretch',
-                  flexGrow: 0,
+                    flexGrow: 0,
                   zIndex: 1,
                   position: 'relative',
-                }}
+                  }}
               >
                 {/* Container */}
                 <div
@@ -602,20 +598,20 @@ export default function HowItWorks() {
 
                 {/* HorizontalBorder - Hidden on tablet */}
                 {!isTablet && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '0%',
-                      right: '0%',
-                      top: '0%',
-                      bottom: '-0.75%',
-                      flex: 'none',
-                      order: 2,
-                      flexGrow: 0,
-                      zIndex: 2,
-                      borderBottom: '1px dashed rgba(0, 0, 0, 0.1)',
-                    }}
-                  />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '0%',
+                    right: '0%',
+                    top: '0%',
+                    bottom: '-0.75%',
+                    flex: 'none',
+                    order: 2,
+                    flexGrow: 0,
+                    zIndex: 2,
+                    borderBottom: '1px dashed rgba(0, 0, 0, 0.1)',
+                  }}
+                />
                 )}
               </div>
 
@@ -1013,40 +1009,40 @@ export default function HowItWorks() {
 
             {/* Image Bg - Desktop and Small Desktop (not tablet) */}
             {!isTablet && (
-              <div
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '0px',
+                width: isMobile ? '100%' : '440px',
+                maxWidth: isMobile ? '100%' : '440px',
+                height: isMobile ? 'auto' : '480px',
+                minHeight: isMobile ? 'auto' : '480px',
+                aspectRatio: isMobile ? '636/691.26' : 'auto',
+                borderRadius: isMobile ? '16px' : '32px',
+                flex: 'none',
+                order: 1,
+                flexGrow: 0,
+                background: '#F9FAFB',
+                marginTop: isMobile ? '24px' : '0px',
+              }}
+            >
+              <Image
+                src="/double_mockup.png"
+                alt="Double Phone Mockup"
+                width={440}
+                height={480}
                 style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '0px',
-                  width: isMobile ? '100%' : '440px',
-                  maxWidth: isMobile ? '100%' : '440px',
-                  height: isMobile ? 'auto' : '480px',
-                  minHeight: isMobile ? 'auto' : '480px',
-                  aspectRatio: isMobile ? '636/691.26' : 'auto',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
                   borderRadius: isMobile ? '16px' : '32px',
-                  flex: 'none',
-                  order: 1,
-                  flexGrow: 0,
-                  background: '#F9FAFB',
-                  marginTop: isMobile ? '24px' : '0px',
                 }}
-              >
-                <Image
-                  src="/double_mockup.png"
-                  alt="Double Phone Mockup"
-                  width={440}
-                  height={480}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    borderRadius: isMobile ? '16px' : '32px',
-                  }}
-                  unoptimized
-                />
-              </div>
+                unoptimized
+              />
+            </div>
             )}
           </div>
         </div>

@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { useIsMobile } from '@/hooks/useMediaQuery'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface FAQItem {
   question: string
@@ -44,7 +43,6 @@ const faqData: FAQItem[] = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number>(-1)
   const isMobile = useIsMobile()
-  const sectionRef = useScrollAnimation()
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index)
@@ -52,8 +50,6 @@ export default function FAQ() {
 
   return (
     <section
-      ref={sectionRef as React.RefObject<HTMLElement>}
-      className="fade-in-up"
       style={{
         display: 'flex',
         flexDirection: 'column',

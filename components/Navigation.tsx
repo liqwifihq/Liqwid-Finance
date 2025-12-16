@@ -51,7 +51,7 @@ export default function Navigation() {
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
-          paddingLeft: isMobile ? '0px' : isTablet ? '0px' : isSmallDesktop ? '0px' : '24px',
+          paddingLeft: '0px',
           paddingRight: '0px',
           textDecoration: 'none',
           cursor: 'pointer',
@@ -206,8 +206,8 @@ export default function Navigation() {
             >
               Join the Waitlist
             </a>
-          </div>
         </div>
+      </div>
       )}
 
       {/* Header Button - Show for tablet, small desktop, and full desktop */}
@@ -260,141 +260,141 @@ export default function Navigation() {
             </a>
           ) : (
             /* Desktop Button with Icon */
-            <div
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              padding: '0px',
+              width: '222px',
+              height: '62px',
+              flex: 'none',
+              order: 0,
+              flexGrow: 0,
+              position: 'relative',
+            }}
+          >
+              <a
+                href="/waitlist"
+              className="relative"
               style={{
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: '0px',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '0px',
+                paddingTop: '15px',
+                paddingRight: '32px',
+                paddingBottom: '15px',
+                paddingLeft: '32px',
+                gap: '8px',
+                isolation: 'isolate',
                 width: '222px',
-                height: '62px',
+                height: '60px',
+                background: '#0F0F0F',
+                borderRadius: '58px',
+                border: 'none',
+                cursor: 'pointer',
                 flex: 'none',
                 order: 0,
                 flexGrow: 0,
-                position: 'relative',
+                opacity: 1,
+                  textDecoration: 'none',
               }}
             >
-              <a
-                href="/waitlist"
-                className="relative"
+              <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'row',
+                  flexDirection: 'column',
                   justifyContent: 'center',
-                  alignItems: 'center',
-                  marginTop: '0px',
-                  paddingTop: '15px',
-                  paddingRight: '32px',
-                  paddingBottom: '15px',
-                  paddingLeft: '32px',
-                  gap: '8px',
-                  isolation: 'isolate',
-                  width: '222px',
-                  height: '60px',
-                  background: '#0F0F0F',
-                  borderRadius: '58px',
-                  border: 'none',
-                  cursor: 'pointer',
+                  alignItems: 'flex-start',
+                  padding: '0px',
+                  width: '118px',
+                  height: '28px',
                   flex: 'none',
                   order: 0,
                   flexGrow: 0,
-                  opacity: 1,
-                  textDecoration: 'none',
+                  zIndex: 0,
                 }}
               >
                 <div
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center',
                     alignItems: 'flex-start',
                     padding: '0px',
                     width: '118px',
                     height: '28px',
                     flex: 'none',
                     order: 0,
+                    alignSelf: 'stretch',
                     flexGrow: 0,
-                    zIndex: 0,
                   }}
                 >
-                  <div
+                  <span
                     style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
                       width: '118px',
                       height: '28px',
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontStyle: 'normal',
+                      fontWeight: 500,
+                      fontSize: '16px',
+                      lineHeight: '27px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      color: '#FFFFFF',
                       flex: 'none',
                       order: 0,
-                      alignSelf: 'stretch',
                       flexGrow: 0,
                     }}
                   >
-                    <span
-                      style={{
-                        width: '118px',
-                        height: '28px',
-                        fontFamily: 'var(--font-plus-jakarta)',
-                        fontStyle: 'normal',
-                        fontWeight: 500,
-                        fontSize: '16px',
-                        lineHeight: '27px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: '#FFFFFF',
-                        flex: 'none',
-                        order: 0,
-                        flexGrow: 0,
-                      }}
-                    >
-                      Join the Waitlist
-                    </span>
-                  </div>
+                    Join the Waitlist
+                  </span>
                 </div>
-                <div
+              </div>
+              <div
+                style={{
+                  boxSizing: 'border-box',
+                  position: 'absolute',
+                  left: '0%',
+                  right: '0%',
+                  top: '0%',
+                  bottom: '0%',
+                  border: '1px solid #0F0F0F',
+                  borderRadius: '58px',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  zIndex: 1,
+                }}
+              />
+              <div
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  transform: 'matrix(-1, 0, 0, 1, 0, 0)',
+                  flex: 'none',
+                  order: 2,
+                  flexGrow: 0,
+                  zIndex: 2,
+                  position: 'relative',
+                }}
+              >
+                <Image
+                  src="/send.svg"
+                  alt="Send"
+                  width={32}
+                  height={32}
                   style={{
-                    boxSizing: 'border-box',
-                    position: 'absolute',
-                    left: '0%',
-                    right: '0%',
-                    top: '0%',
-                    bottom: '0%',
-                    border: '1px solid #0F0F0F',
-                    borderRadius: '58px',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    zIndex: 1,
-                  }}
-                />
-                <div
-                  style={{
-                    width: '32px',
-                    height: '32px',
+                    width: '100%',
+                    height: '100%',
                     transform: 'matrix(-1, 0, 0, 1, 0, 0)',
-                    flex: 'none',
-                    order: 2,
-                    flexGrow: 0,
-                    zIndex: 2,
-                    position: 'relative',
                   }}
-                >
-                  <Image
-                    src="/send.svg"
-                    alt="Send"
-                    width={32}
-                    height={32}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      transform: 'matrix(-1, 0, 0, 1, 0, 0)',
-                    }}
-                    unoptimized
-                  />
-                </div>
+                  unoptimized
+                />
+              </div>
               </a>
-            </div>
+          </div>
           )}
         </div>
       )}
