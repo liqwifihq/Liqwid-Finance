@@ -2,12 +2,16 @@
 
 import Image from 'next/image'
 import { useIsMobile } from '@/hooks/useMediaQuery'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function InteractiveTools() {
   const isMobile = useIsMobile()
+  const sectionRef = useScrollAnimation()
   
   return (
     <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="fade-in-up"
       style={{
         display: 'flex',
         flexDirection: 'column',

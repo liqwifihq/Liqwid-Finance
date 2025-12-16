@@ -2,15 +2,19 @@
 
 import Image from 'next/image'
 import { useIsMobile, useIsTablet, useIsSmallDesktop } from '@/hooks/useMediaQuery'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function HowItWorks() {
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
   const isSmallDesktop = useIsSmallDesktop()
+  const sectionRef = useScrollAnimation()
   
   return (
     <div 
       id="getting-started" 
+      ref={sectionRef as React.RefObject<HTMLDivElement>}
+      className="fade-in-up"
       style={{ 
         position: 'relative', 
         width: '100%', 

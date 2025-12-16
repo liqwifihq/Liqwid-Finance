@@ -13,34 +13,65 @@ export default function LoadingScreen() {
   useEffect(() => {
     // Prevent body scroll while loading
     document.body.style.overflow = 'hidden'
+    const mainContent = document.querySelector('main')
+    
+    // Set initial opacity but keep content in DOM (not hidden)
+    if (mainContent) {
+      const element = mainContent as HTMLElement
+      element.style.opacity = '0'
+      element.style.transition = 'opacity 0.25s ease-in'
+      element.style.willChange = 'opacity' // Optimize for smooth animation
+    }
 
-    // Minimum display time for smooth experience
-    const minDisplayTime = 800 // 800ms minimum
+    // Minimum display time for smooth experience (reduced for faster loading)
+    const minDisplayTime = 300 // 300ms minimum - faster loading
     const startTime = Date.now()
 
-    // Hide loading screen once page is fully loaded
+    // Hide loading screen once page is ready
     const handleLoad = () => {
       const elapsed = Date.now() - startTime
       const remainingTime = Math.max(0, minDisplayTime - elapsed)
 
       setTimeout(() => {
+        // Ensure main content exists and is ready
+        const content = document.querySelector('main') || mainContent
+        if (content) {
+          const element = content as HTMLElement
+          // Use requestAnimationFrame to ensure smooth transition
+          requestAnimationFrame(() => {
+            element.style.opacity = '1'
+          })
+        }
+        document.body.style.overflow = ''
+        document.body.classList.add('loaded')
+        
+        // Start fade out at the same time as content fade-in (crossfade effect)
         setIsFading(true)
         setTimeout(() => {
           setIsLoading(false)
-          document.body.style.overflow = ''
-          document.body.classList.add('loaded')
-        }, 500) // Match fadeOut animation duration
+        }, 250) // Faster fade out (250ms)
       }, remainingTime)
     }
 
-    // If page is already loaded
-    if (document.readyState === 'complete') {
-      handleLoad()
+    // Use DOMContentLoaded for faster initial render (doesn't wait for images)
+    // This makes the transition faster and smoother
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      // Small delay to ensure DOM is fully ready
+      setTimeout(handleLoad, 50)
     } else {
-      window.addEventListener('load', handleLoad)
+      const handleDOMReady = () => {
+        handleLoad()
+      }
+      document.addEventListener('DOMContentLoaded', handleDOMReady)
+      window.addEventListener('load', handleLoad) // Fallback for slower connections
       return () => {
+        document.removeEventListener('DOMContentLoaded', handleDOMReady)
         window.removeEventListener('load', handleLoad)
         document.body.style.overflow = ''
+        const content = document.querySelector('main') || mainContent
+        if (content) {
+          (content as HTMLElement).style.opacity = '1'
+        }
       }
     }
   }, [])
@@ -64,8 +95,9 @@ export default function LoadingScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 9999,
-        animation: isFading ? 'fadeOut 0.5s ease-out forwards' : 'fadeIn 0.3s ease-in',
+        animation: isFading ? 'fadeOut 0.25s ease-out forwards' : 'fadeIn 0.2s ease-in',
         pointerEvents: isFading ? 'none' : 'auto',
+        willChange: isFading ? 'opacity' : 'auto', // Optimize for smooth animation
       }}
     >
       {/* Animated Background Blur Shapes */}

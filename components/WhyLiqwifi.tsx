@@ -2,14 +2,18 @@
 
 import Image from 'next/image'
 import { useIsMobile, useIsTablet } from '@/hooks/useMediaQuery'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function WhyLiqwifi() {
   const isMobile = useIsMobile()
   const isTablet = useIsTablet()
+  const sectionRef = useScrollAnimation()
   
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: '100%', overflow: 'visible' }}>
     <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="fade-in-up"
       style={{
         display: 'flex',
         flexDirection: 'column',
